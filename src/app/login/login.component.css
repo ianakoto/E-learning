@@ -1,0 +1,100 @@
+.expanded-toolbar {
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.white-text{
+  color: white !important;
+
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.info-color {
+  background-color: #1c1061 !important;
+}
+
+.card-header {
+  padding: 0.75rem 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.card-body {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-radius: 0 !important;
+}
+
+mat-card {
+  margin-top: 10%;
+  margin-left: 35%;
+  margin-right:35%;
+  width: 30%;
+  text-align: center;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.md-form {
+  position: relative;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.justify-content-around {
+  -ms-flex-pack: distribute !important;
+  justify-content: space-around !important;
+}
+.d-flex {
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+
+.form-check {
+  position: relative;
+  display: block;
+  padding-left: 1.25rem;
+}

@@ -1,1 +1,73 @@
-<p>login works!</p>
+<mat-toolbar color="primary" class="expanded-toolbar">
+  <span>
+    <button mat-button routerLink="/">E-Learning</button>
+  </span>
+<div fxLayoutAlign="center start" fxShow="true" fxShow.gt-sm >
+  <button mat-button routerLink="adminlogin" >
+    <mat-icon>supervisor_account</mat-icon>
+    Admin
+  </button>
+
+
+</div>
+</mat-toolbar>
+
+
+
+<!-- Material form login -->
+<mat-card>
+  <div class="card">
+  <mat-card-header class="card-header info-color white-text text-center py-4">
+    <h2>
+      Sign in
+    </h2>
+  </mat-card-header>
+  </div>
+
+  <!--Card content-->
+  <mat-card-content class="px-lg-5 pt-0">
+
+    <!-- Form -->
+    <form class="text-center" style="color: #757575;">
+
+      <!-- Email -->
+      <div class="md-form">
+        <input type="email" id="materialLoginFormEmail" class="form-control" matInput>
+        <label for="materialLoginFormEmail">E-mail</label>
+      </div>
+
+      <!-- Password -->
+      <div class="md-form">
+        <input type="password" id="materialLoginFormPassword" class="form-control" matInput>
+        <label for="materialLoginFormPassword">Password</label>
+      </div>
+
+      <div class="d-flex justify-content-around">
+        <div>
+          <!-- Remember me -->
+          <mat-checkbox>Remember me</mat-checkbox>
+        </div>
+        <div>
+          <!-- Forgot password -->
+          <a href="">Forgot password?</a>
+        </div>
+      </div>
+
+      <!-- Sign in button -->
+      <button matBtn color="info" outline="true" rounded="true" block="true" class="my-4 waves-effect z-depth-0" matWavesEffect
+        type="submit">Sign in</button>
+
+      <!-- Register -->
+      <p>Not a member?
+        <a href="">Register</a>
+      </p>
+
+
+
+    </form>
+    <!-- Form -->
+
+  </mat-card-content>
+
+</mat-card>
+<!-- Material form login -->
