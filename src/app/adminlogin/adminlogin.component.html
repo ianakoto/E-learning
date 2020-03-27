@@ -29,18 +29,27 @@
 
 
     <!-- Form -->
-    <form [formGroup]="adminForm" style="color: #757575;" (ngSubmit)="onSubmit(adminForm.value)" >
+    <form [formGroup]="adminForm" style="color: #757575;" (ngSubmit)="signIn()" >
 
       <!-- Email -->
       <div class="md-form">
-        <input type="email" id="email" class="form-control"  formControlName="email" matInput>
-        <label for="email">E-mail</label>
+        <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+        <input type="email" id="email" placeholder="E-mail" class="form-control"  formControlName="email" matInput>
+      </p>
+      <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
+        <div *ngIf="formControls.email.errors.required">Email is required</div>
+      </div>
       </div>
 
       <!-- Password -->
       <div class="md-form">
-        <input type="password" id="password" class="form-control"  formControlName="password" matInput>
-        <label for="password">Password</label>
+        <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+        <input type="password" id="password" placeholder="Password" class="form-control"  formControlName="password" matInput>
+      </p>
+      <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+        <div *ngIf="formControls.password.errors.required">Password is required</div>
+      </div>
+
       </div>
 
 

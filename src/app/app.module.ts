@@ -42,6 +42,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { RegisterComponent } from './register/register.component';
+import { ClassroomComponent } from './classroom/classroom.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    AdminloginComponent
+    AdminloginComponent,
+    RegisterComponent,
+    ClassroomComponent
   ],
   imports: [
     MatSliderModule,
@@ -89,11 +93,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    RouterModule.forRoot([
-      { path: '', component: LoginComponent },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'adminlogin', component: AdminloginComponent },
-    ]),
     BrowserAnimationsModule
 
   ],

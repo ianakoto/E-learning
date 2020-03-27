@@ -3,7 +3,7 @@
     <button mat-button routerLink="/">E-Learning</button>
   </span>
 <div fxLayoutAlign="center start" fxShow="true" fxShow.gt-sm >
-  <button mat-button  routerLink='/adminlogin' >
+  <button mat-button  routerLink='adminlogin' >
     <mat-icon>supervisor_account</mat-icon>
     Admin
   </button>
@@ -19,7 +19,7 @@
   <div class="card">
   <mat-card-header class="card-header info-color white-text text-center py-4" >
     <h2 >
-      SIGN IN
+      Register
     </h2>
   </mat-card-header>
   </div>
@@ -28,40 +28,46 @@
   <mat-card-content class="px-lg-5 pt-0">
 
     <!-- Form -->
-    <form [formGroup]="loginForm" style="color: #757575;" (ngSubmit)="signIn()" >
-
+    <form  [formGroup]="registerForm" style="color: #757575;">
 
       <!-- Email -->
       <div class="md-form">
-        <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
         <input type="email" id="email" formControlName="email" placeholder="E-mail" class="form-control" matInput>
-      </p>
-      <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
-        <div *ngIf="formControls.email.errors.required">Email is required</div>
-      </div>
+
       </div>
 
       <!-- Password -->
       <div class="md-form">
-        <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
         <input type="password" id="pwd" formControlName="pwd" placeholder="Password" class="form-control" matInput>
-      </p>
-      <div *ngIf="isSubmitted && formControls.pwd.errors" class="help-block">
-        <div *ngIf="formControls.pwd.errors.required">Password is required</div>
-      </div>
+
       </div>
 
+      <!-- Phone -->
+      <div class="md-form">
+        <input type="tel" id="phone" class="form-control" formControlName="phone" placeholder="Phone Number" matInput>
 
-       <!-- Sign in button -->
-       <button mat-raised-button color="primary" style="width : 20em; "  type="submit" class="z-depth-0 my-4 waves-effect">Sign In</button>
+      </div>
+
+      <!-- Class -->
+
+      <div class="md-form" >
+          <mat-select  [multiple]="false" formControlName="class" placeholder="Choose your Class" label="class">
+            <mat-option value="KG1" >KG 1</mat-option>
+            <mat-option value="BS Class 1">BS Class 1</mat-option>
+            <mat-option value="BS Class 2">BS Class 2</mat-option>
+            <mat-option value="BS Class 3">BS Class 3</mat-option>
+            <mat-option value="BS Class 4">BS Class 4</mat-option>
+
+          </mat-select>
 
 
-      <!-- Register -->
-      <p>Not a member?
-        <a href="" routerLink='register' style="font-size: medium; padding: 1em;">Register</a>
-      </p>
+      </div>
 
 
+
+
+       <!-- Sign UP button -->
+       <button mat-raised-button color="primary" style="width : 20em; "  type="submit" class="z-depth-0 my-4 waves-effect">Register</button>
 
     </form>
     <!-- Form -->
@@ -70,3 +76,4 @@
 
 </mat-card>
 <!-- Material form login -->
+

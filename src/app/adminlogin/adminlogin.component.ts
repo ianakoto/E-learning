@@ -1,40 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import {  FormBuilder, FormGroup, Validators  } from '@angular/forms';
+
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-adminlogin',
   templateUrl: './adminlogin.component.html',
   styleUrls: ['./adminlogin.component.css']
 })
 export class AdminloginComponent implements OnInit {
-  allow;
-  adminForm;
+
+  isSubmitted = false;
+  adminForm: FormGroup;
   formRout;
   constructor(
     private formBuilder: FormBuilder,
-    private router: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,
   ) {
     this.adminForm = this.formBuilder.group({
-      email: '',
-      password: ''
-    }),
-    this.allow = false;
-    this.formRout = router.data;
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
 
   }
 
   ngOnInit(): void {
   }
 
+  get formControls() {
+    return this.adminForm.controls;
+  }
 
-  onSubmit(customerData) {
-    // Process and compare password hear
-    console.warn('Your order has been submitted', customerData);
-    if (customerData('email') === 'iancecilakoto@gmail.com') {
-      this.allow = true;
+
+  signIn() {
+    this.isSubmitted = true;
+    if (this.adminForm.invalid) {
+      return;
     }
-    this.adminForm.reset();
-
+    this.authService.signInAdmin(this.adminForm.value);
+    this.router.navigateByUrl('/admindashboard');
 
   }
 
