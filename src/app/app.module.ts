@@ -6,8 +6,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminloginComponent} from './adminlogin/adminlogin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { TableListComponent } from './table-list/table-list.component';
+import { TypographyComponent } from './typography/typography.component';
+import { IconsComponent } from './icons/icons.component';
+import { MapsComponent } from './maps/maps.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { UpgradeComponent } from './upgrade/upgrade.component';
 
 
 // Angular Material Components
@@ -44,6 +51,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { RegisterComponent } from './register/register.component';
 import { ClassroomComponent } from './classroom/classroom.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -53,7 +61,8 @@ import { ClassroomComponent } from './classroom/classroom.component';
     DashboardComponent,
     AdminloginComponent,
     RegisterComponent,
-    ClassroomComponent
+    ClassroomComponent,
+    FooterComponent
   ],
   imports: [
     MatSliderModule,

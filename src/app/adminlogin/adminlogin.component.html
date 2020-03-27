@@ -16,10 +16,10 @@
 <!-- Material form login -->
 <mat-card fxLayout="row">
   <div class="card" >
-  <mat-card-header class="card-header info-color white-text text-center py-4" >
-    <h2 >
-      ADMINISTRATOR
-    </h2>
+  <mat-card-header class="card-header info-color white-text"  >
+
+      <p style="text-align: center; flex:content; " >ADMINISTRATOR</p>
+
   </mat-card-header>
   </div>
 
@@ -29,7 +29,7 @@
 
 
     <!-- Form -->
-    <form [formGroup]="adminForm" style="color: #757575;" (ngSubmit)="signIn()" >
+    <form [formGroup]="adminForm"  (ngSubmit)="signIn()" >
 
       <!-- Email -->
       <div class="md-form">
@@ -56,7 +56,7 @@
 
 
        <!-- Sign in button -->
-       <button mat-raised-button color="primary" style="width : 20em; "  type="submit" class="z-depth-0 my-4 waves-effect ">Sign In</button>
+       <button mat-raised-button color="primary" style="flex:content; width: 100%; text-align:center; "  type="submit" class="z-depth-0 my-4 waves-effect ">Sign In</button>
 
 
     </form>
