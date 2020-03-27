@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminloginComponent} from './adminlogin/adminlogin.component';
+
 
 // Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -54,6 +56,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -87,8 +91,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatPaginatorModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
-      { path: 'dashboard/', component: DashboardComponent },
-      { path: 'adminlogin/', component: AdminloginComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'adminlogin', component: AdminloginComponent },
     ]),
     BrowserAnimationsModule
 

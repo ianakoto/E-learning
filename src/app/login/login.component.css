@@ -4,6 +4,7 @@
 }
 
 
+
 .white-text{
   color: white !important;
 
@@ -30,7 +31,7 @@
 }
 
 .info-color {
-  background-color: #1c1061 !important;
+  background-color: #2f246e!important;
 }
 
 .card-header {
@@ -38,7 +39,6 @@
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -97,4 +97,59 @@ mat-card-content {
   position: relative;
   display: block;
   padding-left: 1.25rem;
+}
+
+
+.btn[class*="btn-outline-"] {
+  padding-top: .7rem;
+  padding-bottom: .7rem;
+}
+.btn.btn-block {
+  margin: inherit;
+      margin-top: inherit;
+      margin-bottom: inherit;
+}
+button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+  cursor: pointer;
+}
+.btn-rounded {
+  border-radius: 10em;
+}
+button, html [type="button"], [type="reset"], [type="submit"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.btn-outline-info {
+  color: #33b5e5 !important;
+  background-color: transparent !important;
+  border: 2px solid #33b5e5 !important;
+}
+.waves-effect {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.z-depth-0 {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.mb-4, .my-4 {
+  margin-bottom: 1.5rem !important;
+}
+.mt-4, .my-4 {
+  margin-top: 1.5rem !important;
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}
+.btn-outline-info {
+  color: #17a2b8;
+  border-color: #17a2b8;
 }

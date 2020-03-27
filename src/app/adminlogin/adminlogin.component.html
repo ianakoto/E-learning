@@ -1,1 +1,59 @@
-<p>adminlogin works!</p>
+<mat-toolbar color="primary" class="expanded-toolbar">
+  <span>
+    <button mat-button routerLink="/">E-Learning</button>
+  </span>
+<div  fxLayoutGap="20px" fxLayoutAlign="center start" fxShow="true"  fxShow.gt-sm >
+
+
+   <mat-icon>supervisor_account</mat-icon>
+
+
+
+</div>
+</mat-toolbar>
+
+
+<!-- Material form login -->
+<mat-card fxLayout="row">
+  <div class="card" >
+  <mat-card-header class="card-header info-color white-text text-center py-4" >
+    <h2 >
+      ADMINISTRATOR
+    </h2>
+  </mat-card-header>
+  </div>
+
+  <!--Card content-->
+  <mat-card-content class="px-lg-5 pt-0">
+
+
+
+    <!-- Form -->
+    <form [formGroup]="adminForm" style="color: #757575;" (ngSubmit)="onSubmit(adminForm.value)" >
+
+      <!-- Email -->
+      <div class="md-form">
+        <input type="email" id="email" class="form-control"  formControlName="email" matInput>
+        <label for="email">E-mail</label>
+      </div>
+
+      <!-- Password -->
+      <div class="md-form">
+        <input type="password" id="password" class="form-control"  formControlName="password" matInput>
+        <label for="password">Password</label>
+      </div>
+
+
+
+
+       <!-- Sign in button -->
+       <button mat-raised-button color="primary" style="width : 20em; "  type="submit" class="z-depth-0 my-4 waves-effect ">Sign In</button>
+
+
+    </form>
+    <!-- Form -->
+
+  </mat-card-content>
+
+</mat-card>
+<!-- Material form login -->

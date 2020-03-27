@@ -3,7 +3,7 @@
     <button mat-button routerLink="/">E-Learning</button>
   </span>
 <div fxLayoutAlign="center start" fxShow="true" fxShow.gt-sm >
-  <button mat-button routerLink="adminlogin" >
+  <button mat-button  routerLink='adminlogin' >
     <mat-icon>supervisor_account</mat-icon>
     Admin
   </button>
@@ -17,9 +17,9 @@
 <!-- Material form login -->
 <mat-card>
   <div class="card">
-  <mat-card-header class="card-header info-color white-text text-center py-4">
-    <h2>
-      Sign in
+  <mat-card-header class="card-header info-color white-text text-center py-4" >
+    <h2 >
+      SIGN IN
     </h2>
   </mat-card-header>
   </div>
@@ -28,7 +28,7 @@
   <mat-card-content class="px-lg-5 pt-0">
 
     <!-- Form -->
-    <form class="text-center" style="color: #757575;">
+    <form  style="color: #757575;">
 
       <!-- Email -->
       <div class="md-form">
@@ -49,17 +49,18 @@
         </div>
         <div>
           <!-- Forgot password -->
-          <a href="">Forgot password?</a>
+          <a href="" style="font-size: medium; padding: 1em;">Forgot password?</a>
         </div>
       </div>
 
-      <!-- Sign in button -->
-      <button matBtn color="info" outline="true" rounded="true" block="true" class="my-4 waves-effect z-depth-0" matWavesEffect
-        type="submit">Sign in</button>
+
+       <!-- Sign in button -->
+       <button mat-raised-button color="primary" style="width : 20em; "  type="submit" class="z-depth-0 my-4 waves-effect">Sign In</button>
+
 
       <!-- Register -->
       <p>Not a member?
-        <a href="">Register</a>
+        <a href="" style="font-size: medium; padding: 1em;">Register</a>
       </p>
 
 
