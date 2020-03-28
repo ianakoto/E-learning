@@ -3,18 +3,12 @@ import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AdminloginComponent} from './adminlogin/adminlogin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { TableListComponent } from './table-list/table-list.component';
-import { TypographyComponent } from './typography/typography.component';
-import { IconsComponent } from './icons/icons.component';
-import { MapsComponent } from './maps/maps.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { UpgradeComponent } from './upgrade/upgrade.component';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 
 
 // Angular Material Components
@@ -58,13 +52,14 @@ import { FooterComponent } from './components/footer/footer.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
+    AdmindashboardComponent,
     AdminloginComponent,
     RegisterComponent,
     ClassroomComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
+    RouterModule,
     MatSliderModule,
     BrowserModule,
     AppRoutingModule,
