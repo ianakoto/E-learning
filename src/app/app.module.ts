@@ -45,7 +45,6 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { RegisterComponent } from './register/register.component';
 import { ClassroomComponent } from './classroom/classroom.component';
-import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -56,7 +55,6 @@ import { FooterComponent } from './components/footer/footer.component';
     AdminloginComponent,
     RegisterComponent,
     ClassroomComponent,
-    FooterComponent,
   ],
   imports: [
     RouterModule,
