@@ -1,5 +1,5 @@
 footer {
-  display: flex;
+  display: flIex;
   flex-direction: row;
   width: 70%;
   float: right;
@@ -7,6 +7,7 @@ footer {
   padding: 1px;
 }
 
-mat-list{
+mat-list > {
   padding: 5px;
 }
+

@@ -5,17 +5,11 @@
 }
 
 heard-dec{
-  display: flex;
+  display: inline-block;
   flex-direction: row;
   width: 70%;
 }
 
-footer-dec{
-  display: flex;
-  flex-direction: row;
-  width: 70%;
-  float: right;
-}
 
 mat-drawer {
   width: 20%;

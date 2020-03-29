@@ -1,1 +1,52 @@
-<p>dashboard works!</p>
+<div  fxLayout="row" fxFlex="40" style="margin: 30px;" fxLayoutAlign="center start" >
+
+    <mat-card class="d-log">
+      <mat-icon class="icon1">computer</mat-icon>
+      <ul style="list-style-type: none;">
+        <li>Active Users</li>
+
+        <li style="font:caption; font-size:x-large; margin:5px;">30</li>
+
+      </ul>
+
+
+
+    </mat-card>
+
+    <mat-card class="d-log">
+      <mat-icon class="icon2">how_to_reg</mat-icon>
+      <ul style="list-style-type: none;">
+        <li>Subscriptions</li>
+
+        <li style="font:caption; font-size:x-large; margin:5px;">+50</li>
+
+      </ul>
+    </mat-card>
+
+
+    <mat-card class="d-log">
+      <mat-icon class="icon3">cloud_circle</mat-icon>
+      <ul style="list-style-type: none;">
+         <li>Online      </li>
+
+        <li style="font:caption; font-size:x-large; margin:5px;">+10</li>
+
+      </ul>
+      </mat-card>
+
+
+
+
+
+
+</div>
+
+
+<div  fxLayout="row" fxFlex="40" style="margin: 30px; margin-top:5em;" fxLayoutAlign="center start" >
+
+  <mat-card>
+    <x-chartist style="margin: 50px;" [type]="type" [data]="data" [options]="options" [events]="events" ></x-chartist>
+  </mat-card>
+
+</div>
+

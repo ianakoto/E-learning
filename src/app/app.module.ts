@@ -46,7 +46,7 @@ import { RegisterComponent } from './register/register.component';
 import { ClassroomComponent } from './classroom/classroom.component';
 
 import { DefaultModule } from './layouts/default/default.module';
-
+import { ChartistModule } from 'ng-chartist';
 
 @NgModule({
   declarations: [
@@ -57,6 +57,7 @@ import { DefaultModule } from './layouts/default/default.module';
     ClassroomComponent,
   ],
   imports: [
+    ChartistModule,
     DefaultModule,
     RouterModule,
     MatSliderModule,

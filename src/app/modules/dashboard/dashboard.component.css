@@ -1,0 +1,41 @@
+.d-log {
+  display: inline-flex;
+  flex-direction: row;
+  width: max-content;
+
+}
+
+mat-card {
+  display: inline-flex;
+  flex-direction: row;
+  margin-left: 150px;
+  background-color:white;
+
+}
+
+.icon1 {
+  background-color: #9c27b0;
+  height: 60px;
+  width: 60px;
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -2px grey;
+}
+
+.icon2 {
+  background-color: red;
+  height: 60px;
+  width: 60px;
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -2px grey;
+}
+
+.icon3 {
+  background-color: orange;
+  height: 60px;
+  width: 60px;
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -2px grey;
+}
+
+.mat-icon {
+  font-size: 60px;
+  color: white;
+  margin-right: 30px;
+}

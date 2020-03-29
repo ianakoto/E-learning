@@ -5,18 +5,34 @@
     DashBoard
   </span>
 <div fxLayoutAlign="center start" fxShow="true" fxShow.gt-sm >
+  <ul style="list-style: none; display:inline-flex;">
 
-    <button mat-button  >  <mat-icon>notifications</mat-icon>   </button>
+ <li>
+    <button mat-button [matMenuTriggerFor]="notification"  >  <mat-icon>notifications</mat-icon>   </button>
 
-    <button mat-button > <mat-icon>supervisor_account</mat-icon> </button>
-      <!-- <mat-menu #menu="matMenu">
+    <mat-menu #notification="matMenu">
+      <mat-card>
+        <mat-list role="list">
+          <mat-list-item role="listitem">Item 1</mat-list-item>
+          <mat-list-item role="listitem">Item 2</mat-list-item>
+          <mat-list-item role="listitem">Item 3</mat-list-item>
+        </mat-list>
+      </mat-card>
+      </mat-menu>
+
+  </li>
+
+  <li>
+    <button mat-button [matMenuTriggerFor]="menu" > <mat-icon>supervisor_account</mat-icon> </button>
+      <mat-menu #menu="matMenu">
         <button mat-menu-item>
             <mat-icon>exit_to_app</mat-icon>
                 Sign Out
                 </button>
-        </mat-menu> -->
+        </mat-menu>
+  </li>
 
-
+</ul>
 </div>
 </mat-toolbar>
 </div>
