@@ -1,13 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule} from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { AdminloginComponent} from './adminlogin/adminlogin.component';
+import { CommonModule } from '@angular/common';
+import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.component';
+import { DefaultComponent } from './default.component';
+import { RouterModule } from '@angular/router';
+import { ManageclassesComponent } from 'src/app/modules/manageclasses/manageclasses.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 // Angular Material Components
@@ -42,29 +39,18 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { RegisterComponent } from './register/register.component';
-import { ClassroomComponent } from './classroom/classroom.component';
-
-import { DefaultModule } from './layouts/default/default.module';
-
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    AdminloginComponent,
-    RegisterComponent,
-    ClassroomComponent,
+    DefaultComponent,
+    DashboardComponent,
+    ManageclassesComponent,
   ],
   imports: [
-    DefaultModule,
+    CommonModule,
     RouterModule,
-    MatSliderModule,
-    BrowserModule,
-    AppRoutingModule,
+    SharedModule,
     BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -96,9 +82,6 @@ import { DefaultModule } from './layouts/default/default.module';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    BrowserAnimationsModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  ]
 })
-export class AppModule { }
+export class DefaultModule { }

@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+heard-dec{
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+}
+
+footer-dec{
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  float: right;
+}
+
+mat-drawer {
+  width: 20%;
+}
+
+mat-drawer-container {
+  height: 100%;
+}
