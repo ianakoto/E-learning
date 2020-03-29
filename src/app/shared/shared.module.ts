@@ -13,6 +13,7 @@ import { MatListModule, MatNavList } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -23,6 +24,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     SidebarComponent,
   ],
   imports: [
+    RouterModule,
     CommonModule,
     MatDividerModule,
     MatIconModule,

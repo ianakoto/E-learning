@@ -39,15 +39,17 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ManageusersComponent } from 'src/app/modules/manageusers/manageusers.component';
 
 
-import { ChartistModule } from 'ng-chartist';
+
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
     ManageclassesComponent,
+    ManageusersComponent
   ],
   imports: [
     CommonModule,
@@ -85,7 +87,6 @@ import { ChartistModule } from 'ng-chartist';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    ChartistModule
   ]
 })
 export class DefaultModule { }

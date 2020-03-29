@@ -39,3 +39,7 @@ mat-card {
   color: white;
   margin-right: 30px;
 }
+
+table {
+  width: 100%;
+}

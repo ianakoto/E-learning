@@ -1,0 +1,62 @@
+.icon1 {
+  background-color: orangered;
+  height: 60px;
+  width: 60px;
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -2px grey;
+}
+
+
+.icon2 {
+  background-color: blueviolet;
+  height: 60px;
+  width: 60px;
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -2px grey;
+}
+
+
+.icon3 {
+  background-color: palevioletred;
+  height: 60px;
+  width: 60px;
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -2px grey;
+}
+
+.d-log {
+  display: inline-flex;
+  flex-direction: row;
+  width: max-content;
+
+}
+
+button {
+  display: inline-flex;
+  flex-direction: row;
+  margin-left: 50px;
+  background-color:white;
+
+}
+
+mat-card {
+  display: inline-flex;
+  flex-direction: row;
+  margin: 20px;
+  background-color:white;
+
+}
+
+.mat-icon {
+  font-size: 55px;
+  color: white;
+  margin-right: 30px;
+}
+
+button:hover{
+  background-color: transparent;
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -2px grey;
+  font-size: 150%;
+}
+
+
+table {
+  width: 100%;
+}
