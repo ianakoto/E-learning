@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 
 
+
 // import { ILineChartOptions, IChartistAnimationOptions, IChartistData} from 'chartist';
 
 // import { ChartEvent, ChartType } from 'ng-chartist';
@@ -38,7 +39,20 @@ export class DashboardComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
+
+
+
+
   constructor() { }
+
+
+  ngOnInit() {
+  }
+
+
+
+
+
 
 
   // type: ChartType = 'Line';
@@ -85,7 +99,5 @@ export class DashboardComponent implements OnInit {
   //   }
   // };
 
-  ngOnInit(): void {
-  }
 
 }

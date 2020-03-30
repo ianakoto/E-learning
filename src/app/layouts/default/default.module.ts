@@ -41,17 +41,25 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ManageusersComponent } from 'src/app/modules/manageusers/manageusers.component';
 
+// tslint:disable-next-line:max-line-length
+import { DashboardnotificationandissueComponent } from 'src/app/modules/dashboardnotificationandissue/dashboardnotificationandissue.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
 
+import { ShareddialogModule } from 'src/app/dialog/shared/shareddialog.module';
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
     ManageclassesComponent,
-    ManageusersComponent
+    ManageusersComponent,
+    DashboardnotificationandissueComponent
   ],
   imports: [
+    ShareddialogModule,
+    MatDialogModule,
+    ReactiveFormsModule,
     CommonModule,
     RouterModule,
     SharedModule,

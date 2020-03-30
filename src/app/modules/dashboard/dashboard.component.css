@@ -5,10 +5,18 @@
 
 }
 
-mat-card {
+
+.mat-card1 {
   display: inline-flex;
   flex-direction: row;
   margin-left: 150px;
+  background-color:white;
+
+}
+
+.mat-card2 {
+  display: inline-flex;
+  flex-direction: row;
   background-color:white;
 
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { VideoComponent } from 'src/app/dialog/shared/video/video.component';
+
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -33,9 +36,23 @@ export class ManageclassesComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
-  constructor() { }
+  constructor( private dialog: MatDialog ) { }
 
   ngOnInit(): void {
   }
+
+
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = '70%';
+    dialogConfig.width = '70%';
+
+    this.dialog.open(VideoComponent, dialogConfig);
+  }
+
 
 }

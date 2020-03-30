@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 
+
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -24,14 +25,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 @Component({
-  selector: 'app-manageusers',
-  templateUrl: './manageusers.component.html',
-  styleUrls: ['./manageusers.component.css']
+  selector: 'app-dashboardnotificationandissue',
+  templateUrl: './dashboardnotificationandissue.component.html',
+  styleUrls: ['./dashboardnotificationandissue.component.css']
 })
-export class ManageusersComponent implements OnInit {
+export class DashboardnotificationandissueComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
+
   constructor() { }
 
   ngOnInit(): void {

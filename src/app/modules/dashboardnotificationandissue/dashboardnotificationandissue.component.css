@@ -1,0 +1,11 @@
+table {
+  width: 100%;
+}
+
+
+.mat-card2 {
+  display: inline-flex;
+  flex-direction: row;
+  background-color:white;
+
+}

@@ -8,6 +8,9 @@ import { AuthGuard } from './auth.guard';
 import { DefaultComponent } from './layouts/default/default.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { ManageclassesComponent } from './modules/manageclasses/manageclasses.component';
+import { ManageusersComponent } from './modules/manageusers/manageusers.component';
+// tslint:disable-next-line:max-line-length
+import { DashboardnotificationandissueComponent } from 'src/app/modules/dashboardnotificationandissue/dashboardnotificationandissue.component';
 
 
 const routes: Routes = [
@@ -17,7 +20,9 @@ const routes: Routes = [
   { path: 'admindashboard', component: DefaultComponent, children: [
     {path: '', pathMatch: 'full', redirectTo: 'dashboard' },
     {path: 'dashboard', component: DashboardComponent },
-    {path: 'manageclass', component: ManageclassesComponent }
+    {path: 'manageclass', component: ManageclassesComponent },
+    {path: 'manageusers', component: ManageusersComponent },
+    {path: 'notificationandissues', component: DashboardnotificationandissueComponent }
 
   ]},
   { path: 'adminlogin', component: AdminloginComponent, canActivate: [AuthGuard] },

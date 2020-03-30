@@ -39,7 +39,7 @@ button {
 mat-card {
   display: inline-flex;
   flex-direction: row;
-  margin: 20px;
+  margin-top: 20px;
   background-color:white;
 
 }
