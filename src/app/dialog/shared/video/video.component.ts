@@ -163,8 +163,10 @@ onReset() {
   this.dynamicForm.reset();
   this.s.clear();
   this.t.clear();
+  this.v.clear();
   this.subno = 0;
   this.topno = 0;
+  this.vidno = 0;
 }
 
 onClear() {
@@ -172,6 +174,10 @@ onClear() {
   this.submitted = false;
   this.s.clear();
   this.t.clear();
+  this.v.clear();
+  this.subno = 0;
+  this.topno = 0;
+  this.vidno = 0;
 }
 
 

@@ -25,6 +25,7 @@
   display: inline-flex;
   flex-direction: row;
   width: max-content;
+  margin-bottom: 20px;;
 
 }
 

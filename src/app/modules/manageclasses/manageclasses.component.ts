@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { VideoComponent } from 'src/app/dialog/shared/video/video.component';
+import { NotesComponent } from 'src/app/dialog/shared/notes/notes.component';
+import { ExerciseComponent } from 'src/app/dialog/shared/exercise/exercise.component';
 
 export interface PeriodicElement {
   name: string;
@@ -42,7 +44,7 @@ export class ManageclassesComponent implements OnInit {
   }
 
 
-  openDialog() {
+  openvidDialog() {
 
     const dialogConfig = new MatDialogConfig();
 
@@ -54,5 +56,29 @@ export class ManageclassesComponent implements OnInit {
     this.dialog.open(VideoComponent, dialogConfig);
   }
 
+  opennotDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = '70%';
+    dialogConfig.width = '70%';
+
+    this.dialog.open(NotesComponent, dialogConfig);
+  }
+
+
+  openexerDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = '70%';
+    dialogConfig.width = '70%';
+
+    this.dialog.open(ExerciseComponent, dialogConfig);
+  }
 
 }
