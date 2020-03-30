@@ -59,15 +59,15 @@
                     <div [formGroup]="exe" class="form-row">
                       <div fxLayout="column">
                         <h3 class="card-title" style="margin-top: 20px;">Enter Question</h3>
-                        <ckeditor formControlName="test" [ngClass]="{ 'is-invalid': submitted && exe.test.errors }" [editor]="Editor" data="<p>Hello, world!</p>" (ready)="onReady($event)"></ckeditor>
+                        <ckeditor formControlName="test" [ngClass]="{ 'is-invalid': submitted && exe.errors }" [editor]="Editor" data="<p>Replace this text with your exercise quetion!</p>" (ready)="onReady($event)"></ckeditor>
 
-                        <div *ngIf="submitted && exe.test.errors" class="invalid-feedback">
-                            <div *ngIf="exe.test.errors.required" class="isa_error">Exercise is required</div>
+                        <div *ngIf="submitted && exe.errors" class="invalid-feedback">
+                            <div *ngIf="exe.errors.required" class="isa_error">Exercise is required</div>
                         </div>
                         <h3 class="card-title" style="margin-top: 20px;">Add Options</h3>
-                        <input type="text" formControlName="options" class="form-control" [ngClass]="{ 'is-invalid': submitted && exe.options.errors }" />
-                        <div *ngIf="submitted && exe.options.errors" class="invalid-feedback">
-                            <div *ngIf="exe.options.errors.required" class="isa_error">Exercise Options is required</div>
+                        <input type="text" formControlName="options" class="form-control" [ngClass]="{ 'is-invalid': submitted && exe.errors }" />
+                        <div *ngIf="submitted && exe.errors" class="invalid-feedback">
+                            <div *ngIf="exe.errors.required" class="isa_error">Exercise Options is required</div>
                         </div>
 
 
