@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "happy-kids-e-learning": {
+      "hosting": {
+        "elearn": [
+          "happy-kids-e-learning"
+        ]
+      }
+    }
+  }
+}

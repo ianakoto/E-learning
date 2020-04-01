@@ -43,13 +43,32 @@
         <div *ngFor="let topic of t.controls;" class="list-group list-group-flush">
           <div class="list-group-item">
             <h3 class="card-title" style="margin-top: 20px;">Enter Topic Name</h3>
-            <div [formGroup]="subject" class="form-row">
+            <div [formGroup]="topic" class="form-row">
               <div fxLayout="column">
 
                 <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && topic.errors }" />
                 <div *ngIf="submitted && topic.errors" class="invalid-feedback">
                     <div *ngIf="topic.errors.required" class="isa_error">Topic Name is required</div>
                 </div>
+
+
+
+
+
+                <!--Added Lesson -->
+
+                <div *ngFor="let less of l.controls;" class="list-group list-group-flush">
+                  <div class="list-group-item">
+                    <h3 class="card-title" style="margin-top: 20px;">Enter Lesson Name or Title</h3>
+                    <div [formGroup]="less" class="form-row">
+
+                      <div fxLayout="column">
+
+                        <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && less.errors }" />
+                        <div *ngIf="submitted && less.errors" class="invalid-feedback">
+                            <div *ngIf="less.errors.required" class="isa_error">Lesson Name is required</div>
+                        </div>
+
 
                 <!--Added Notes -->
 
@@ -58,15 +77,12 @@
                   <div class="list-group-item mborder">
                     <div [formGroup]="note" class="form-row">
                       <div fxLayout="column">
-                        <h3 class="card-title" style="margin-top: 20px;">Select note</h3>
-                        <input type="file" formControlName="url" class="form-control" [ngClass]="{ 'is-invalid': submitted && note.url.errors }" />
-                        <div *ngIf="submitted && note.url.errors" class="invalid-feedback">
-                            <div *ngIf="note.url.errors.required" class="isa_error">Note is required</div>
-                        </div>
-                        <h3 class="card-title" style="margin-top: 20px;">Enter Title for Note</h3>
-                        <input type="text" formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && note.title.errors }" />
-                        <div *ngIf="submitted && note.title.errors" class="invalid-feedback">
-                            <div *ngIf="note.title.errors.required" class="isa_error">Note Title is required</div>
+                        <h3 class="card-title" style="margin-top: 20px;">Add Notes</h3>
+
+                        <ckeditor formControlName="text" [ngClass]="{ 'is-invalid': submitted && note.errors }" [editor]="Editor" data="<p>Replace this text with your exercise quetion!</p>" (ready)="onReady($event)"></ckeditor>
+
+                        <div *ngIf="submitted && note.errors" class="invalid-feedback">
+                            <div *ngIf="note.errors.required" class="isa_error">Exercise is required</div>
                         </div>
 
 
@@ -78,9 +94,31 @@
 
                         <!--Adde or remove notes-->
         <div fxLayout="row" style="display:inline-flex; margin-top:15px;" >
-          <button mat-raised-button  (click)="addnote(); onChangeNotes();"><span><mat-icon>add</mat-icon> Add Note</span> </button>
-          <button mat-raised-button   (click)="removenote(); onChangeNotes();"><span><mat-icon>remove</mat-icon> Remove </span></button>
+          <button mat-raised-button style="margin: 10px;" (click)="addnote(); onChangeNotes();"><span><mat-icon>add</mat-icon> Add Note</span> </button>
+          <button mat-raised-button  style="margin: 10px;" (click)="removenote(); onChangeNotes();"><span><mat-icon>remove</mat-icon> Remove </span></button>
         </div>
+
+
+
+
+                      </div>
+
+                    </div>
+
+
+                  </div>
+                </div>
+
+
+
+              <!--Adde or remove lesson-->
+              <div fxLayout="row" style="display:inline-flex; margin-top:15px;" >
+              <button mat-raised-button style="margin: 10px;" (click)="addless(); onChangeLessons();"><span><mat-icon>add</mat-icon> Add Lesson</span> </button>
+              <button mat-raised-button  style="margin: 10px;" (click)="removelesson(); onChangeLessons();"><span><mat-icon>remove</mat-icon> Remove </span></button>
+              </div>
+
+
+
 
 
               </div>
@@ -92,8 +130,8 @@
 
         <!--Adde or remove TOpics-->
         <div fxLayout="row" style="display:inline-flex; margin-top:15px;" >
-          <button mat-raised-button  (click)="addtopic(); onChangeTopics();"><span><mat-icon>add</mat-icon> Add Topic</span> </button>
-          <button mat-raised-button  (click)="removetopic(); onChangeTopics();"><span><mat-icon>remove</mat-icon> Remove </span></button>
+          <button mat-raised-button style="margin: 10px;" (click)="addtopic(); onChangeTopics();"><span><mat-icon>add</mat-icon> Add Topic</span> </button>
+          <button mat-raised-button style="margin: 10px;" (click)="removetopic(); onChangeTopics();"><span><mat-icon>remove</mat-icon> Remove </span></button>
         </div>
 
       </div>
@@ -108,8 +146,8 @@
 
   <!--Add or remove  subject-->
   <div fxLayout="row" style="display:inline-flex; margin-top:15px;" >
-    <button mat-raised-button  (click)="addsubject(); onChangeSubjects();"><span><mat-icon>add</mat-icon> Add Subject</span></button>
-    <button mat-raised-button  (click)="removesubject(); onChangeSubjects();"><span><mat-icon>remove</mat-icon> Remove </span></button>
+    <button mat-raised-button style="margin: 10px;"  (click)="addsubject(); onChangeSubjects();"><span><mat-icon>add</mat-icon> Add Subject</span></button>
+    <button mat-raised-button style="margin: 10px;" (click)="removesubject(); onChangeSubjects();"><span><mat-icon>remove</mat-icon> Remove </span></button>
   </div>
 
   </form>

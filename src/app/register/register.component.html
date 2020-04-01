@@ -54,6 +54,28 @@
         </div>
       </div>
 
+            <!-- Parent Name -->
+            <div class="md-form">
+              <p [ngClass]="{ 'has-error': isSubmitted && formControls.parent.errors }">
+              <input type="text" id="parent" class="form-control" formControlName="parent" placeholder="Parent Name" matInput>
+            </p>
+
+              <div *ngIf="isSubmitted && formControls.parent.errors" class="help-block">
+                <div *ngIf="formControls.parent.errors.required">Parent Name is required</div>
+              </div>
+            </div>
+
+                  <!-- Student Name -->
+      <div class="md-form">
+        <p [ngClass]="{ 'has-error': isSubmitted && formControls.student.errors }">
+        <input type="text" id="student" class="form-control" formControlName="student" placeholder="Student Name" matInput>
+      </p>
+
+        <div *ngIf="isSubmitted && formControls.student.errors" class="help-block">
+          <div *ngIf="formControls.student.errors.required">Student Name is required</div>
+        </div>
+      </div>
+
       <!-- Class -->
 
       <div class="md-form" >

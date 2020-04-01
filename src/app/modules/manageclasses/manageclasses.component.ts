@@ -50,8 +50,8 @@ export class ManageclassesComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.height = '70%';
-    dialogConfig.width = '70%';
+    dialogConfig.height = '80%';
+    dialogConfig.width = '80%';
 
     this.dialog.open(VideoComponent, dialogConfig);
   }
@@ -62,8 +62,8 @@ export class ManageclassesComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.height = '70%';
-    dialogConfig.width = '70%';
+    dialogConfig.height = '80%';
+    dialogConfig.width = '80%';
 
     this.dialog.open(NotesComponent, dialogConfig);
   }
@@ -75,8 +75,8 @@ export class ManageclassesComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.height = '70%';
-    dialogConfig.width = '70%';
+    dialogConfig.height = '80%';
+    dialogConfig.width = '80%';
 
     this.dialog.open(ExerciseComponent, dialogConfig);
   }

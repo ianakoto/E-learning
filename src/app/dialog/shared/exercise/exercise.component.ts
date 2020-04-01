@@ -20,6 +20,7 @@ export class ExerciseComponent implements OnInit {
 
   subno = 0;
   topno = 0;
+  lessno = 0;
   exeno = 0;
 
   constructor(private formBuilder: FormBuilder) { }
@@ -29,6 +30,7 @@ export class ExerciseComponent implements OnInit {
     this.dynamicForm = this.formBuilder.group({
       subjects: new FormArray([]),
       topics: new FormArray([]),
+      lessons: new FormArray([]),
       exercises: new FormArray([]),
       class_no: ['', Validators.required]
   });
@@ -37,12 +39,16 @@ export class ExerciseComponent implements OnInit {
 
 
   addsubject() {
-
+    if (this.subno > 1 ) {
+      return this.subno = 1;
+    }
     return this.subno += 1;
   }
 
   addtopic() {
-
+    if (this.topno > 1 ) {
+      return this.topno = 1;
+    }
     return this.topno += 1;
   }
 
@@ -51,6 +57,9 @@ export class ExerciseComponent implements OnInit {
     return this.exeno += 1;
   }
 
+  addless() {
+    return this.lessno += 1;
+  }
 
   removeexer() {
     if (this.exeno <= 0) {
@@ -77,6 +86,13 @@ export class ExerciseComponent implements OnInit {
     return this.topno -= 1;
   }
 
+  removelesson() {
+    if (this.lessno <= 0) {
+      return this.lessno = 0;
+    }
+    return this.lessno -= 1;
+  }
+
 
     // convenience getters for easy access to form fields
     get f() { return this.dynamicForm.controls; }
@@ -84,6 +100,7 @@ export class ExerciseComponent implements OnInit {
     get s() { return this.f.subjects as FormArray; }
     get t() { return this.f.topics as FormArray; }
     get e() { return this.f.exercises as FormArray; }
+    get l() { return this.f.lessons as FormArray; }
     get c() {return this.f; }
 
     onChangeSubjects() {
@@ -115,6 +132,21 @@ export class ExerciseComponent implements OnInit {
             this.t.removeAt(i);
         }
     }
+}
+
+onChangeLessons() {
+  const numberOfTickets = this.lessno;
+  if (this.l.length < numberOfTickets) {
+      for (let i = this.l.length; i < numberOfTickets; i++) {
+          this.l.push(this.formBuilder.group({
+              name: ['', Validators.required],
+          }));
+      }
+  } else {
+      for (let i = this.l.length; i >= numberOfTickets; i--) {
+          this.l.removeAt(i);
+      }
+  }
 }
 
   onChangeExercises() {
@@ -154,10 +186,12 @@ onReset() {
   this.dynamicForm.reset();
   this.s.clear();
   this.t.clear();
+  this.l.clear();
   this.e.clear();
   this.subno = 0;
   this.topno = 0;
   this.exeno = 0;
+  this.lessno = 0;
 }
 
 onClear() {
@@ -165,10 +199,12 @@ onClear() {
   this.submitted = false;
   this.s.clear();
   this.t.clear();
+  this.l.clear();
   this.e.clear();
   this.subno = 0;
   this.topno = 0;
   this.exeno = 0;
+  this.lessno = 0;
 }
 
 

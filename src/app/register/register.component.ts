@@ -21,6 +21,8 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       email: ['', Validators.required],
       pwd: ['', Validators.required],
+      parent: ['', Validators.required],
+      student: ['', Validators.required],
       phone: ['', Validators.required],
       class_no: ['', Validators.required],
     });
@@ -39,8 +41,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    this.regService.register(this.registerForm.value);
-    this.router.navigateByUrl('/classroom');
+    this.regService.doRegister(this.registerForm.value, 'popupstyle');
 
   }
 

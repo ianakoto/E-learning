@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "elearn",
+      "public": "dist/elearn",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

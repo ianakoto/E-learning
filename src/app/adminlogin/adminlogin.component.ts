@@ -39,7 +39,6 @@ export class AdminloginComponent implements OnInit {
       return;
     }
     this.authService.signInAdmin(this.adminForm.value);
-    this.router.navigateByUrl('/admindashboard');
 
   }
 

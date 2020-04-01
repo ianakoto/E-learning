@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
-
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
 @Component({
@@ -15,9 +15,13 @@ export class NotesComponent implements OnInit {
   dynamicForm: FormGroup;
   submitted = false;
 
+  public Editor = ClassicEditor;
+
+
 
   subno = 0;
   topno = 0;
+  lessno = 0;
   notno = 0;
 
 
@@ -27,6 +31,7 @@ export class NotesComponent implements OnInit {
     this.dynamicForm = this.formBuilder.group({
       subjects: new FormArray([]),
       topics: new FormArray([]),
+      lessons: new FormArray([]),
       notes: new FormArray([]),
       class_no: ['', Validators.required]
   });
@@ -46,6 +51,9 @@ export class NotesComponent implements OnInit {
     return this.topno += 1;
   }
 
+  addless() {
+    return this.lessno += 1;
+  }
   addnote() {
 
     return this.notno += 1;
@@ -77,12 +85,20 @@ export class NotesComponent implements OnInit {
     return this.topno -= 1;
   }
 
+  removelesson() {
+    if (this.lessno <= 0) {
+      return this.lessno = 0;
+    }
+    return this.lessno -= 1;
+  }
+
 
     // convenience getters for easy access to form fields
     get f() { return this.dynamicForm.controls; }
 
     get s() { return this.f.subjects as FormArray; }
     get t() { return this.f.topics as FormArray; }
+    get l() { return this.f.lessons as FormArray; }
     get n() { return this.f.notes as FormArray; }
     get c() {return this.f; }
 
@@ -101,6 +117,20 @@ export class NotesComponent implements OnInit {
       }
   }
 
+  onChangeLessons() {
+    const numberOfTickets = this.lessno;
+    if (this.l.length < numberOfTickets) {
+        for (let i = this.l.length; i < numberOfTickets; i++) {
+            this.l.push(this.formBuilder.group({
+                name: ['', Validators.required],
+            }));
+        }
+    } else {
+        for (let i = this.l.length; i >= numberOfTickets; i--) {
+            this.l.removeAt(i);
+        }
+    }
+  }
 
   onChangeTopics() {
     const numberOfTickets = this.topno;
@@ -122,8 +152,7 @@ export class NotesComponent implements OnInit {
     if (this.n.length < numberOfnotes) {
         for (let i = this.n.length; i < numberOfnotes; i++) {
             this.n.push(this.formBuilder.group({
-                url: ['', Validators.required],
-                title: ['', Validators.required]
+                text: ['', Validators.required],
             }));
         }
     } else {
@@ -153,6 +182,8 @@ onReset() {
   this.dynamicForm.reset();
   this.s.clear();
   this.t.clear();
+  this.l.clear();
+  this.lessno = 0;
   this.n.clear();
   this.subno = 0;
   this.topno = 0;
@@ -164,6 +195,8 @@ onClear() {
   this.submitted = false;
   this.s.clear();
   this.t.clear();
+  this.l.clear();
+  this.lessno = 0;
   this.n.clear();
   this.subno = 0;
   this.topno = 0;
@@ -171,6 +204,13 @@ onClear() {
 }
 
 
+
+public onReady( editor ) {
+  editor.ui.getEditableElement().parentElement.insertBefore(
+      editor.ui.view.toolbar.element,
+      editor.ui.getEditableElement()
+  );
+}
 
 
 }

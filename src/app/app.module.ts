@@ -48,6 +48,13 @@ import { ClassroomComponent } from './classroom/classroom.component';
 import { DefaultModule } from './layouts/default/default.module';
 
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, FirestoreSettingsToken  } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAnalyticsModule} from '@angular/fire/analytics';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +64,11 @@ import { DefaultModule } from './layouts/default/default.module';
     ClassroomComponent,
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAnalyticsModule,
     DefaultModule,
     RouterModule,
     MatSliderModule,
@@ -98,7 +110,7 @@ import { DefaultModule } from './layouts/default/default.module';
     MatPaginatorModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [ {provide: FirestoreSettingsToken, useValue: {}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

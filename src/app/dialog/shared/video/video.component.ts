@@ -12,6 +12,7 @@ export class VideoComponent implements OnInit {
   subno = 0;
   topno = 0;
   vidno = 0;
+  lessno = 0;
 
   hides = true;
   hidet = true;
@@ -26,6 +27,7 @@ export class VideoComponent implements OnInit {
     this.dynamicForm = this.formBuilder.group({
       subjects: new FormArray([]),
       topics: new FormArray([]),
+      lessons: new FormArray([]),
       videos: new FormArray([]),
       class_no: ['', Validators.required]
   });
@@ -58,6 +60,9 @@ export class VideoComponent implements OnInit {
     return this.vidno += 1;
   }
 
+  addless() {
+    return this.lessno += 1;
+  }
 
   removevideo() {
     if (this.vidno <= 0) {
@@ -88,11 +93,20 @@ export class VideoComponent implements OnInit {
   }
 
 
+  removelesson() {
+    if (this.lessno <= 0) {
+      return this.lessno = 0;
+    }
+    return this.lessno -= 1;
+  }
+
+
     // convenience getters for easy access to form fields
     get f() { return this.dynamicForm.controls; }
 
     get s() { return this.f.subjects as FormArray; }
     get t() { return this.f.topics as FormArray; }
+    get l() { return this.f.lessons as FormArray; }
     get v() { return this.f.videos as FormArray; }
     get c() {return this.f; }
 
@@ -144,6 +158,22 @@ export class VideoComponent implements OnInit {
   }
 
 
+  onChangeLessons() {
+    const numberOfTickets = this.lessno;
+    if (this.l.length < numberOfTickets) {
+        for (let i = this.l.length; i < numberOfTickets; i++) {
+            this.l.push(this.formBuilder.group({
+                name: ['', Validators.required],
+            }));
+        }
+    } else {
+        for (let i = this.l.length; i >= numberOfTickets; i--) {
+            this.l.removeAt(i);
+        }
+    }
+  }
+
+
 onSubmit() {
   this.submitted = true;
 
@@ -163,6 +193,8 @@ onReset() {
   this.dynamicForm.reset();
   this.s.clear();
   this.t.clear();
+  this.l.clear();
+  this.lessno = 0;
   this.v.clear();
   this.subno = 0;
   this.topno = 0;
@@ -174,6 +206,8 @@ onClear() {
   this.submitted = false;
   this.s.clear();
   this.t.clear();
+  this.l.clear();
+  this.lessno = 0;
   this.v.clear();
   this.subno = 0;
   this.topno = 0;

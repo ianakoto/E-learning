@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { User } from '../user';
+import { Usert } from '../usert';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -18,7 +17,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router,
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -41,9 +39,13 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.authService.signIn(this.loginForm.value);
-    this.router.navigateByUrl('/classroom');
+    this.authService.login(this.loginForm.value);
 
   }
+
+  withGoogle() {
+    this.authService.loginWithGoogle();
+  }
+
 
 }

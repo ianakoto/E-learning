@@ -48,15 +48,31 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ShareddialogModule } from 'src/app/dialog/shared/shareddialog.module';
 
+import { ActivityComponent } from 'src/app/modules/activity/activity.component';
+
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAnalyticsModule} from '@angular/fire/analytics';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
     ManageclassesComponent,
     ManageusersComponent,
-    DashboardnotificationandissueComponent
+    DashboardnotificationandissueComponent,
+    ActivityComponent,
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule,
+    AngularFireAnalyticsModule,
     ShareddialogModule,
     MatDialogModule,
     ReactiveFormsModule,

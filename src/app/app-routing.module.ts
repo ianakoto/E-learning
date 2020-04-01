@@ -12,6 +12,7 @@ import { ManageusersComponent } from './modules/manageusers/manageusers.componen
 // tslint:disable-next-line:max-line-length
 import { DashboardnotificationandissueComponent } from 'src/app/modules/dashboardnotificationandissue/dashboardnotificationandissue.component';
 
+import { ActivityComponent } from 'src/app/modules/activity/activity.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,7 @@ const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent },
     {path: 'manageclass', component: ManageclassesComponent },
     {path: 'manageusers', component: ManageusersComponent },
+    {path: 'activity', component: ActivityComponent },
     {path: 'notificationandissues', component: DashboardnotificationandissueComponent }
 
   ]},

@@ -43,7 +43,7 @@
         <div *ngFor="let topic of t.controls;" class="list-group list-group-flush">
           <div class="list-group-item">
             <h3 class="card-title" style="margin-top: 20px;">Enter Topic Name</h3>
-            <div [formGroup]="subject" class="form-row">
+            <div [formGroup]="topic" class="form-row">
               <div fxLayout="column">
 
                 <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && topic.errors }" />
@@ -51,37 +51,70 @@
                     <div *ngIf="topic.errors.required" class="isa_error">Topic Name is required</div>
                 </div>
 
-                <!--Added Exercies -->
 
-                <div *ngFor="let exe of e.controls;" class="list-group list-group-flush">
+                <!--Added Lesson -->
 
-                  <div class="list-group-item mborder">
-                    <div [formGroup]="exe" class="form-row">
+                <div *ngFor="let less of l.controls;" class="list-group list-group-flush">
+                  <div class="list-group-item">
+                    <h3 class="card-title" style="margin-top: 20px;">Enter Lesson Name or Title</h3>
+                    <div [formGroup]="less" class="form-row">
+
                       <div fxLayout="column">
-                        <h3 class="card-title" style="margin-top: 20px;">Enter Question</h3>
-                        <ckeditor formControlName="test" [ngClass]="{ 'is-invalid': submitted && exe.errors }" [editor]="Editor" data="<p>Replace this text with your exercise quetion!</p>" (ready)="onReady($event)"></ckeditor>
 
-                        <div *ngIf="submitted && exe.errors" class="invalid-feedback">
-                            <div *ngIf="exe.errors.required" class="isa_error">Exercise is required</div>
+                        <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && less.errors }" />
+                        <div *ngIf="submitted && less.errors" class="invalid-feedback">
+                            <div *ngIf="less.errors.required" class="isa_error">Lesson Name is required</div>
                         </div>
-                        <h3 class="card-title" style="margin-top: 20px;">Add Options</h3>
-                        <input type="text" formControlName="options" class="form-control" [ngClass]="{ 'is-invalid': submitted && exe.errors }" />
-                        <div *ngIf="submitted && exe.errors" class="invalid-feedback">
-                            <div *ngIf="exe.errors.required" class="isa_error">Exercise Options is required</div>
-                        </div>
+
+                              <!--Added Exercies -->
+
+                              <div *ngFor="let exe of e.controls;" class="list-group list-group-flush">
+
+                                <div class="list-group-item mborder">
+                                  <div [formGroup]="exe" class="form-row">
+                                    <div fxLayout="column">
+                                      <h3 class="card-title" style="margin-top: 20px;">Enter Question</h3>
+                                      <ckeditor formControlName="test" [ngClass]="{ 'is-invalid': submitted && exe.errors }" [editor]="Editor" data="<p>Replace this text with your exercise quetion!</p>" (ready)="onReady($event)"></ckeditor>
+
+                                      <div *ngIf="submitted && exe.errors" class="invalid-feedback">
+                                          <div *ngIf="exe.errors.required" class="isa_error">Exercise is required</div>
+                                      </div>
+                                      <h3 class="card-title" style="margin-top: 20px;">Add Answer</h3>
+                                      <input type="text" formControlName="options" class="form-control" [ngClass]="{ 'is-invalid': submitted && exe.errors }" />
+                                      <div *ngIf="submitted && exe.errors" class="invalid-feedback">
+                                          <div *ngIf="exe.errors.required" class="isa_error">Exercise Options is required</div>
+                                      </div>
+
+
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+
+                                      <!--Adde or remove exes-->
+                          <div fxLayout="row" style="display:inline-flex; margin-top:15px;" >
+                          <button mat-raised-button style="margin: 10px;" (click)="addexer(); onChangeExercises();"><span><mat-icon>add</mat-icon> Add Exercise</span> </button>
+                          <button mat-raised-button style="margin: 10px;"  (click)="removeexer(); onChangeExercises();"><span><mat-icon>remove</mat-icon> Remove </span></button>
+                          </div>
 
 
                       </div>
+
                     </div>
+
 
                   </div>
                 </div>
 
-                        <!--Adde or remove exes-->
-        <div fxLayout="row" style="display:inline-flex; margin-top:15px;" >
-          <button mat-raised-button  (click)="addexer(); onChangeExercises();"><span><mat-icon>add</mat-icon> Add exe</span> </button>
-          <button mat-raised-button   (click)="removeexer(); onChangeExercises();"><span><mat-icon>remove</mat-icon> Remove </span></button>
-        </div>
+
+
+              <!--Adde or remove lesson-->
+              <div fxLayout="row" style="display:inline-flex; margin-top:15px;" >
+              <button mat-raised-button style="margin: 10px;" (click)="addless(); onChangeLessons();"><span><mat-icon>add</mat-icon> Add Lesson</span> </button>
+              <button mat-raised-button style="margin: 10px;"  (click)="removelesson(); onChangeLessons();"><span><mat-icon>remove</mat-icon> Remove </span></button>
+              </div>
+
 
 
               </div>
@@ -93,8 +126,8 @@
 
         <!--Adde or remove TOpics-->
         <div fxLayout="row" style="display:inline-flex; margin-top:15px;" >
-          <button mat-raised-button  (click)="addtopic(); onChangeTopics();"><span><mat-icon>add</mat-icon> Add Topic</span> </button>
-          <button mat-raised-button  (click)="removetopic(); onChangeTopics();"><span><mat-icon>remove</mat-icon> Remove </span></button>
+          <button mat-raised-button style="margin: 10px;" (click)="addtopic(); onChangeTopics();"><span><mat-icon>add</mat-icon> Add Topic</span> </button>
+          <button mat-raised-button style="margin: 10px;" (click)="removetopic(); onChangeTopics();"><span><mat-icon>remove</mat-icon> Remove </span></button>
         </div>
 
       </div>
@@ -109,8 +142,8 @@
 
   <!--Add or remove  subject-->
   <div fxLayout="row" style="display:inline-flex; margin-top:15px;" >
-    <button mat-raised-button  (click)="addsubject(); onChangeSubjects();"><span><mat-icon>add</mat-icon> Add Subject</span></button>
-    <button mat-raised-button  (click)="removesubject(); onChangeSubjects();"><span><mat-icon>remove</mat-icon> Remove </span></button>
+    <button mat-raised-button style="margin: 10px;" (click)="addsubject(); onChangeSubjects();"><span><mat-icon>add</mat-icon> Add Subject</span></button>
+    <button mat-raised-button style="margin: 10px;" (click)="removesubject(); onChangeSubjects();"><span><mat-icon>remove</mat-icon> Remove </span></button>
   </div>
 
   </form>
