@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
+
+import { FirebaseserviceService } from 'src/app/firebaseservice.service';
+import { Videomodule } from 'src/app/videomodule';
+import { Observable } from 'rxjs';
+
+
+
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -18,10 +25,16 @@ export class VideoComponent implements OnInit {
   hidet = true;
   hidev = true;
 
+  uploadPercent: Observable<number>;
+
   dynamicForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  module: Videomodule;
+
+  selectedFiles: FileList;
+
+  constructor(private formBuilder: FormBuilder, private fireservice: FirebaseserviceService) { }
 
   ngOnInit() {
     this.dynamicForm = this.formBuilder.group({
@@ -34,6 +47,10 @@ export class VideoComponent implements OnInit {
 
 
 
+  }
+
+  detectFiles(event) {
+    this.selectedFiles = event.target.files;
   }
 
 
@@ -182,8 +199,15 @@ onSubmit() {
       return;
   }
 
+  this.module = this.dynamicForm.value;
+
+
+  // upload to database
+
+  this.fireservice.uploadStorage(this.module, this.selectedFiles);
+  this.uploadPercent = this.fireservice.uploadPercent;
   // display form values on success
-  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.dynamicForm.value, null, 4));
+  // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.dynamicForm.value, null, 4));
 }
 
 

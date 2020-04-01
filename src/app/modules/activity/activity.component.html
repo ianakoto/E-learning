@@ -9,32 +9,36 @@
   <mat-card >
 
     <ul style="list-style-type: none;">
-      
+
 
       <li style="font:larger; font-size:x-large; margin:20px;">SNAKE GAME</li>
 
       <li style="font:lighter; font-size:small; margin:20px;">Click the button bellow to add game to extracurricular activity</li>
 
-      <li style=" margin:20px;"> <mat-slide-toggle>Enable Game Activity</mat-slide-toggle>
-    </ul>
+      <li style=" margin:20px;"> <mat-slide-toggle [formControl]="snakechange" [checked]="snakegame">Enable Game Activity</mat-slide-toggle>
+        <li>  <button mat-button (click)="uploadSnakeGameActivity()">Save State </button> </li>
+      </ul>
 
+    <button mat-raised-button (click)="previewSnakeGame()">Preview Snake Game</button>
   </mat-card>
 
-  
+
     <mat-card >
 
       <ul style="list-style-type: none;">
         <li style="font:larger; font-size:x-large; margin:20px;">THREES GAME</li>
 
         <li style="font:lighter; font-size:small; margin:20px;">Click the button bellow to add game to extracurricular activity</li>
-  
-        <li style=" margin:20px;"> <mat-slide-toggle>Enable Game Activity</mat-slide-toggle>
+
+        <li style=" margin:20px;"> <mat-slide-toggle [formControl]="threeschange" [checked]="threesgame" >Enable Game Activity</mat-slide-toggle>
         </li>
+        <li>  <button mat-button (click)="uploadThreesGameActivity()">Save State </button> </li>
       </ul>
 
+      <button mat-raised-button (click)="previewThreesGame()">Preview Threes Game </button>
     </mat-card>
 
- 
+
 
 
 
@@ -44,15 +48,36 @@
         <li style="font:larger; font-size:x-large; margin:20px;">LINE RIDER GAME</li>
 
         <li style="font:lighter; font-size:small; margin:20px;">Click the button bellow to add game to extracurricular activity</li>
-  
-        <li style=" margin:20px;"> <mat-slide-toggle>Enable Game Activity</mat-slide-toggle>
-      </ul>
 
+        <li style=" margin:20px;"> <mat-slide-toggle [formControl]="linechange" [checked]="linegame">Enable Game Activity</mat-slide-toggle>
+        <li>  <button mat-button (click)="uploadLineGameActivity()">Save State </button> </li>
+        </ul>
+
+      <button mat-raised-button (click)="previewLineGame()">Preview LineRider Game</button>
     </mat-card>
-
- 
 
 
 
 </div>
+
+
+<div *ngIf="linegame" style="height:100% ;">
+  <P style="font:larger; font-size:x-large; margin:20px;">PLAY  GAME</P>
+  <iframe src="https://www.linerider.com/" height="100%" width="90%" style="margin: 30px;"></iframe>
+
+</div>
+
+<div *ngIf="threesgame" style="height:100% ;">
+  <P style="font:larger; font-size:x-large; margin:20px;">PLAY  GAME</P>
+  <iframe src="http://threesjs.com/" height="100%" width="90%" style="margin: 30px;"></iframe>
+
+</div>
+
+<div *ngIf="snakegame" style="height:100% ;">
+  <P style="font:larger; font-size:x-large; margin:20px;">PLAY  GAME</P>
+  <iframe src="http://slither.io/" height="100%" width="90%" style="margin: 30px;"></iframe>
+
+</div>
+
+
 

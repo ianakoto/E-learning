@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { FirebaseserviceService } from 'src/app/firebaseservice.service';
+import { Exercisemodule } from 'src/app/exercisemodule';
 
 @Component({
   selector: 'app-exercise',
@@ -17,13 +19,13 @@ export class ExerciseComponent implements OnInit {
   dynamicForm: FormGroup;
   submitted = false;
 
-
+  module: Exercisemodule;
   subno = 0;
   topno = 0;
   lessno = 0;
   exeno = 0;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private fireservice: FirebaseserviceService) { }
 
   ngOnInit(): void {
 
@@ -175,8 +177,15 @@ onSubmit() {
       return;
   }
 
+
+  this.module = this.dynamicForm.value;
+
+
+  // upload to database
+
+  this.fireservice.uploadexercise_data(this.module);
   // display form values on success
-  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.dynamicForm.value, null, 4));
+  // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.dynamicForm.value, null, 4));
 }
 
 

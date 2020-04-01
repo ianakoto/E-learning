@@ -52,11 +52,12 @@ import { ActivityComponent } from 'src/app/modules/activity/activity.component';
 
 
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import {AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAnalyticsModule} from '@angular/fire/analytics';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { environment } from 'src/environments/environment';
     ActivityComponent,
   ],
   imports: [
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
@@ -111,6 +113,10 @@ import { environment } from 'src/environments/environment';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-  ]
+  ],
+  providers: [
+    {provide: FirestoreSettingsToken, useValue: {}},
+    { provide: BUCKET, useValue: 'gs://happy-kids-e-learning.appspot.com' }
+  ],
 })
 export class DefaultModule { }

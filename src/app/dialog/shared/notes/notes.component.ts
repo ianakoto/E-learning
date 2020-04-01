@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
+import { FirebaseserviceService } from 'src/app/firebaseservice.service';
+import { Notemodule } from 'src/app/notemodule';
 
 @Component({
   selector: 'app-notes',
@@ -17,7 +19,7 @@ export class NotesComponent implements OnInit {
 
   public Editor = ClassicEditor;
 
-
+  module: Notemodule;
 
   subno = 0;
   topno = 0;
@@ -25,7 +27,7 @@ export class NotesComponent implements OnInit {
   notno = 0;
 
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private fireservice: FirebaseserviceService) { }
 
   ngOnInit(): void {
     this.dynamicForm = this.formBuilder.group({
@@ -171,8 +173,14 @@ onSubmit() {
       return;
   }
 
+  this.module = this.dynamicForm.value;
+
+
+  // upload to database
+
+  this.fireservice.uploadnote_data(this.module);
   // display form values on success
-  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.dynamicForm.value, null, 4));
+  // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.dynamicForm.value, null, 4));
 }
 
 

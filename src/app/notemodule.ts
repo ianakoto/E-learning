@@ -1,5 +1,5 @@
 export interface Notemodule {
-  class: string;
+  class_no: string;
   subjects: Array<string>;
   topics: Array<string>;
   lessons: Array<string>;

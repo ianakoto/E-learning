@@ -3,6 +3,10 @@
     <h2 mat-dialog-title >ADD LECTURE VIDEOS</h2>
   </mat-card>
 
+  <div *ngIf="uploadPercent | async as pct" style="margin: 30px;">
+    <progress [value]="pct" max="100"></progress>
+    {{ pct | number }}%
+  </div>
 
 <mat-dialog-content >
 
@@ -78,7 +82,7 @@
                     <div [formGroup]="video" class="form-row">
                       <div fxLayout="column">
                         <h3 class="card-title" style="margin-top: 20px;">Select Video</h3>
-                        <input type="file" formControlName="url" class="form-control" [ngClass]="{ 'is-invalid': submitted && video.errors }" />
+                        <input type="file" formControlName="url" class="form-control" (change)="detectFiles($event)" [ngClass]="{ 'is-invalid': submitted && video.errors }" accept="video/*" />
                         <div *ngIf="submitted && video.errors" class="invalid-feedback">
                             <div *ngIf="video.errors.required" class="isa_error">Video is required</div>
                         </div>

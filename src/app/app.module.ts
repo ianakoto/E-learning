@@ -54,7 +54,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAnalyticsModule} from '@angular/fire/analytics';
 import { environment } from 'src/environments/environment';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +64,7 @@ import { environment } from 'src/environments/environment';
     ClassroomComponent,
   ],
   imports: [
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
