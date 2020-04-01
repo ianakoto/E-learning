@@ -71,10 +71,11 @@ export class VideoComponent implements OnInit {
   }
 
   addvideo() {
-    if (this.vidno > 0) {
-      this.hidev = false;
+
+    if (this.vidno > 1) {
+      return this.vidno = 0;
     }
-    return this.vidno += 1;
+    return this.vidno = 1;
   }
 
   addless() {

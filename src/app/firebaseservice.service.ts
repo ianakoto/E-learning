@@ -20,7 +20,7 @@ import * as Blob from 'blob';
 })
 export class FirebaseserviceService {
 
-
+  items$: Observable<any>;
   task: AngularFireUploadTask;
   selectedFiles: FileList;
   activityData;
@@ -60,13 +60,22 @@ export class FirebaseserviceService {
       this.uploadPercent = task.percentageChanges();
       // get notified when the download URL is available
       task
-      .then(snapShot => {
-        console.log(snapShot.downloadURL);
-        this.downloadURL = snapShot.downloadURL ;
-        this.uploadvideo_data(data, this.downloadURL);
-      }).catch( (error) => {
-        this.openSnackBar('Failed to Upload Video reason: ' + error.message, 'Upload Error');
-      });
+      .snapshotChanges()
+      .pipe( finalize( () => {
+        this.items$ = storageRef.getDownloadURL();
+        this.items$.subscribe( mdata => {
+          this.downloadURL = mdata;
+          this.uploadvideo_data(data, this.downloadURL);
+        });
+
+      } ) ).subscribe();
+      // .then(snapShot => {
+      //   console.log(snapShot.downloadURL);
+      //   this.downloadURL = snapShot.downloadURL ;
+      //   this.uploadvideo_data(data, this.downloadURL);
+      // }).catch( (error) => {
+      //   this.openSnackBar('Failed to Upload Video reason: ' + error.message, 'Upload Error');
+      // });
 
     });
 

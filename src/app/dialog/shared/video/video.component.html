@@ -3,10 +3,18 @@
     <h2 mat-dialog-title >ADD LECTURE VIDEOS</h2>
   </mat-card>
 
+
+
   <div *ngIf="uploadPercent | async as pct" style="margin: 30px;">
-    <progress [value]="pct" max="100"></progress>
-    {{ pct | number }}%
+    <ul>
+      <li><p>Please wait am working</p> </li>
+      <li> <mat-progress-bar [value]="pct" max="100" >{{ pct | number }}%</mat-progress-bar></li>
+    </ul>
+
+
   </div>
+
+
 
 <mat-dialog-content >
 

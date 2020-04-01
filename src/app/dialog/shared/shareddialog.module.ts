@@ -10,13 +10,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { MatProgressBar } from '@angular/material/progress-bar';
+import { MatProgressBar, MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 @NgModule({
   declarations: [VideoComponent, NotesComponent, ExerciseComponent],
   imports: [
-    MatProgressBar,
+    MatProgressBarModule,
     CommonModule,
     MatDialogModule,
     ReactiveFormsModule,
