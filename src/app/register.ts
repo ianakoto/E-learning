@@ -5,4 +5,5 @@ export interface Register {
   student: string;
   phone: string;
   class_no: string;
+
 }

@@ -14,6 +14,7 @@ import {Exercisemodule} from '../app/exercisemodule';
 import { finalize } from 'rxjs/operators';
 
 import * as Blob from 'blob';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -109,8 +110,13 @@ export class FirebaseserviceService {
           .doc(tvalues.toString())
           .collection('lessons')
           .doc(lvalues.toString())
-          .set({videoslist: {title: videotitle , url: downloadurl}})
+          .set({videoslist: {title: videotitle , url: downloadurl}}, { merge: true })
           .then(() => {
+            this.afs
+            .collection('materialhist')
+            .add({type: 'Video', lesson : lvalues.toString(), time: formatDate(new Date(), 'yyyy/MM/dd', 'en')  } );
+
+
             this.openSnackBar('Video Uploaded SuccessFully', 'Video Upload');
           })
           .catch((error) => {
@@ -150,8 +156,13 @@ export class FirebaseserviceService {
           .doc(tvalues.toString())
           .collection('lessons')
           .doc(lvalues.toString())
-          .set({noteslist: data.notes})
+          .set({noteslist: data.notes}, { merge: true })
           .then(() => {
+            this.afs
+            .collection('materialhist')
+            .add({type: 'Note', lesson : lvalues.toString(), time: formatDate(new Date(), 'yyyy/MM/dd', 'en')  } );
+
+
             this.openSnackBar('Notes Uploaded SuccessFully', 'Note Upload');
           })
           .catch((error) => {
@@ -190,9 +201,14 @@ export class FirebaseserviceService {
           .doc(tvalues.toString())
           .collection('lessons')
           .doc(lvalues.toString())
-          .set({exerciselist: data.exercise})
+          .set({exerciselist: data.exercises}, { merge: true })
           .then(() => {
-            this.openSnackBar('Notes Uploaded SuccessFully', 'Note Upload');
+            this.afs
+            .collection('materialhist')
+            .add({type: 'Exercise', lesson : lvalues.toString(), time: formatDate(new Date(), 'yyyy/MM/dd', 'en')  } );
+
+
+            this.openSnackBar('Exercises Uploaded SuccessFully', 'Exercise Upload');
           })
           .catch((error) => {
             this.openSnackBar('Failed to Upload, reason' + error.message, 'Error Upload');
@@ -207,10 +223,30 @@ export class FirebaseserviceService {
 
   }
 
+  countactiveUsers(adduser) {
+
+    this.afs
+          .collection('usersinfo')
+          .doc('activte')
+          .set({ number: adduser}, { merge: true } );
+  }
+
+  getuserHistory() {
+    return this.afs
+    .collection('users')
+    .snapshotChanges();
+
+  }
+
+  getuploadHistory() {
+    return this.afs
+    .collection('materialhist')
+    .snapshotChanges();
+  }
 
   snakeActivity(value) {
     this.afs
-          .collection('activity').doc('games').update({snake: value})
+          .collection('activity').doc('games').set({snake: value}, { merge: true })
           .then(() => {
             this.openSnackBar('Snake Activity set SuccessFully', 'Activity Change');
           })
@@ -222,7 +258,7 @@ export class FirebaseserviceService {
   lineActivity(value) {
     console.log(value);
     this.afs
-          .collection('activity').doc('games').update({line: value})
+          .collection('activity').doc('games').set({line: value} , { merge: true })
           .then(() => {
             this.openSnackBar('Line Activity set SuccessFully', 'Activity Change');
           })
@@ -233,7 +269,7 @@ export class FirebaseserviceService {
 
   threesActivity(value) {
     this.afs
-          .collection('activity').doc('games').update({threes: value})
+          .collection('activity').doc('games').set({threes: value}, { merge: true })
           .then(() => {
             this.openSnackBar('Threes Activity set SuccessFully', 'Activity Change');
           })
@@ -252,7 +288,7 @@ export class FirebaseserviceService {
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 2000,
+      duration: 10000,
       verticalPosition: 'top',
     });
   }

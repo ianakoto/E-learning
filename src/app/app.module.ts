@@ -43,7 +43,6 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { RegisterComponent } from './register/register.component';
-import { ClassroomComponent } from './classroom/classroom.component';
 
 import { DefaultModule } from './layouts/default/default.module';
 
@@ -60,7 +59,6 @@ import { environment } from 'src/environments/environment';
     LoginComponent,
     AdminloginComponent,
     RegisterComponent,
-    ClassroomComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

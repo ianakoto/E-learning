@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FirebaseserviceService } from 'src/app/firebaseservice.service';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+import { DocumentChangeAction, QueryDocumentSnapshot } from '@angular/fire/firestore';
+import { Userhist } from 'src/app/userhist';
+import { Histupload } from 'src/app/histupload';
 
 
 
@@ -9,20 +14,6 @@ import { Component, OnInit } from '@angular/core';
 
 
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-];
 
 
 @Component({
@@ -32,20 +23,92 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class DashboardComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['student_name', 'parent_name', 'phone_number'];
+  dataSource;
+  materialSource;
 
+  materialdisplayColumns: string[] = ['type', 'lesson', 'time'];
 
+  items: DocumentChangeAction<unknown>[];
+  // docchange: DocumentChangeAction<>;
+  Useritems$: QueryDocumentSnapshot<unknown>;
 
+  model: Userhist;
+  ELEMENT_DATA  = [];
+  MATERIAL_ELEMENT_DATA  = [];
+  matmodule: Histupload;
 
-  constructor() { }
+  constructor(private fireservice: FirebaseserviceService) { }
 
 
   ngOnInit() {
+
+    this.getuserRecord();
+
+    this.getuploadRecord();
+
   }
 
 
+  getuploadRecord() {
+    this
+    .fireservice
+    .getuploadHistory()
+    .subscribe( data => {
+        const itemsm = data ;
+        itemsm.map( mdata => {
+          this.matmodule = mdata.payload.doc.data() as Histupload;
+          if ( this.matmodule.type != null) {
+          this.MATERIAL_ELEMENT_DATA.push({
+            type: this.matmodule.type,
+            lesson: this.matmodule.lesson,
+            time: this.matmodule.time,
+           });
 
+          }
+
+        });
+
+        this.MATERIAL_ELEMENT_DATA =  JSON.parse( JSON.stringify( this.MATERIAL_ELEMENT_DATA ) );
+        this.materialSource = this.MATERIAL_ELEMENT_DATA;
+
+        console.log(this.MATERIAL_ELEMENT_DATA);
+
+
+    });
+
+  }
+
+
+  getuserRecord() {
+    this
+    .fireservice
+    .getuserHistory()
+    .subscribe( data => {
+        this.items = data ;
+        this.items.map( mdata => {
+          this.Useritems$ = mdata.payload.doc;
+
+
+          this.model = mdata.payload.doc.data() as Userhist;
+          if ( this.model.email != null) {
+          this.ELEMENT_DATA.push({
+            student_name: this.model.studen_name,
+            parent_name: this.model.parent_name,
+            phone_number: this.model.phone,
+           });
+
+          }
+
+        });
+
+        this.ELEMENT_DATA =  JSON.parse( JSON.stringify( this.ELEMENT_DATA ) );
+        this.dataSource = this.ELEMENT_DATA;
+
+        console.log(this.ELEMENT_DATA  );
+    });
+
+  }
 
 
 

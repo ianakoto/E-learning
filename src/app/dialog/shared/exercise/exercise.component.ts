@@ -158,7 +158,6 @@ onChangeLessons() {
             this.e.push(this.formBuilder.group({
                 test: ['', Validators.required],
                 options: ['', Validators.required],
-                answer: ['', Validators.required],
             }));
         }
     } else {

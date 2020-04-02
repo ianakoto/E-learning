@@ -6,9 +6,10 @@
 
 
   <div *ngIf="uploadPercent | async as pct" style="margin: 30px;">
-    <ul>
+    <ul style="list-style: none;">
       <li><p>Please wait am working</p> </li>
       <li> <mat-progress-bar [value]="pct" max="100" >{{ pct | number }}%</mat-progress-bar></li>
+      <li> <p> percentage : {{ pct | number }}%</p></li>
     </ul>
 
 
@@ -22,7 +23,7 @@
 
     <label  for="nclss" style="font:caption">Select Class</label>
     <div class="md-form form-control-selector" id="nclss">
-      <p [ngClass]="{ 'has-error': submitted && c.class_no.errors }">
+      <p [ngClass]="{ 'has-error': submitted && c.errors }">
         <mat-select  [multiple]="false" formControlName="class_no" placeholder="Choose  Class" label="class">
           <mat-option value="KG1" >KG 1</mat-option>
           <mat-option value="BS Class 1">BS Class 1</mat-option>
@@ -32,7 +33,7 @@
 
         </mat-select>
       </p>
-        <div *ngIf="submitted && c.class_no.errors" class="help-block">
+        <div *ngIf="submitted && c.errors" class="help-block">
           <div *ngIf="c.class_no.errors.required" class="isa_error">Class is required</div>
         </div>
     </div>

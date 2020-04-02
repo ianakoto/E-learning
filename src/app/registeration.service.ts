@@ -13,6 +13,7 @@ import { switchMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -32,13 +33,15 @@ export class RegisterationService {
     doRegister(value: Register, popupstyle: string) {
       return this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.pwd)
       .then(res => {
+        const datenow = formatDate(new Date(), 'yyyy/MM/dd', 'en');
         if ( res.user.email != null) {
           this.afs.collection('users').add(
             {
               email: value.email,
               studen_name: value.student,
               parent_name: value.parent,
-              phone: value.phone
+              phone: value.phone,
+              datereg : datenow
             }).then( () => {
                 // pop up show successfull and rout
                 this.openSnackBar('Registration Successfull', 'Registration', popupstyle);

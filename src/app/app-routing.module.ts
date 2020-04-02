@@ -13,6 +13,10 @@ import { ManageusersComponent } from './modules/manageusers/manageusers.componen
 import { DashboardnotificationandissueComponent } from 'src/app/modules/dashboardnotificationandissue/dashboardnotificationandissue.component';
 
 import { ActivityComponent } from 'src/app/modules/activity/activity.component';
+import { ClasshomeComponent } from './modules/classhome/classhome.component';
+import { DefaluthomeComponent } from './home/defaluthome/defaluthome.component';
+import { TopicshomeComponent } from './modules/topicshome/topicshome.component';
+import { LessonshomeComponent } from './modules/lessonshome/lessonshome.component';
 
 const routes: Routes = [
 
@@ -29,7 +33,14 @@ const routes: Routes = [
   ]},
   { path: 'adminlogin', component: AdminloginComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
-  { path: 'classroom', component: ClassroomComponent },
+  { path: 'classroom', component: DefaluthomeComponent, children: [
+    {path: '', pathMatch: 'full', redirectTo: 'classdashboard' },
+    {path: 'classdashboard', component: ClasshomeComponent },
+    {path: 'topics', component: TopicshomeComponent },
+    {path: 'lessons', component: LessonshomeComponent },
+    {path: 'tutor', component: ClassroomComponent}
+
+  ] },
 
 ];
 
