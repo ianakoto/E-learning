@@ -85,7 +85,7 @@ async  loginWithGoogle() {
 
 async signInAdmin(usert: Usert) {
   const result = await (await this.afAuth.auth.signInWithEmailAndPassword(usert.email, usert.password)).user.uid;
-  if (result === '3hGpuhH7KcdbkBqNLUJZ6WYPBX13') {
+  if (result === 'eFkMW5DD6CPG6KuVF0HmoKDt1us2') {
     this.router.navigateByUrl('/admindashboard');
   } else {
     // tslint:disable-next-line:max-line-length

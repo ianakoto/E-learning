@@ -42,19 +42,18 @@ export class SubjectComponent implements OnInit {
     .subscribe( (val) => this.classname = val);
     const lvalues = Object.keys(this.classname).map(key => this.classname[key]);
     this.classname = lvalues[0].class;
-
+    console.log(this.classname);
     this.firebaseService
     .getmaterialdata()
     .subscribe( data => {
       const itemsm = data ;
       itemsm.map( mdata => {
-        console.log(mdata.payload.doc.data());
         this.matmodule = mdata.payload.doc.data() as Datm;
-        if ( this.matmodule.class != null) {
+        if ( this.matmodule.class != null && this.matmodule.class === String(this.classname).toLowerCase()) {
             if ( !this.subjects.includes(this.matmodule.subject.toUpperCase()) ) {
               this.subjects.push(this.matmodule.subject.toUpperCase());
             }
-            console.log( this.subjects);
+
         }
 
       });

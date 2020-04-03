@@ -5,6 +5,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { VideoComponent } from 'src/app/dialog/shared/video/video.component';
 import { NotesComponent } from 'src/app/dialog/shared/notes/notes.component';
 import { ExerciseComponent } from 'src/app/dialog/shared/exercise/exercise.component';
+import { FirebaseserviceService } from 'src/app/firebaseservice.service';
 
 export interface PeriodicElement {
   name: string;
@@ -38,7 +39,7 @@ export class ManageclassesComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
-  constructor( private dialog: MatDialog ) { }
+  constructor( private dialog: MatDialog, private firebaseservice: FirebaseserviceService ) { }
 
   ngOnInit(): void {
   }
