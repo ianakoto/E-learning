@@ -1,0 +1,12 @@
+footer {
+  display: flIex;
+  flex-direction: row;
+  width: 70%;
+  float: right;
+  height: 2%;
+  padding: 1px;
+}
+
+mat-list > {
+  padding: 5px;
+}

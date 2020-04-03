@@ -15,12 +15,17 @@ import { finalize } from 'rxjs/operators';
 
 import * as Blob from 'blob';
 import { formatDate } from '@angular/common';
+import { PutDataStore } from './put-data-store';
+
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseserviceService {
 
+  putdat: PutDataStore;
   items$: Observable<any>;
   task: AngularFireUploadTask;
   selectedFiles: FileList;
@@ -100,28 +105,113 @@ export class FirebaseserviceService {
           const videotitle = Object.keys(data.videos).map(key => data.videos[key])[0];
           const videourl = Object.keys(data.videos).map(key => data.videos[key])[1];
 
+          const exercisequestans = Object.keys(data.exercises).map(key => data.exercises[key])[0];
+          const exerciseans = Object.keys(data.exercises).map(key => data.exercises[key])[1];
 
-          this.afs
-          .collection('class')
-          .doc(data.class_no)
-          .collection('subjects')
-          .doc(svalues.toString())
-          .collection('topics')
-          .doc(tvalues.toString())
-          .collection('lessons')
-          .doc(lvalues.toString())
-          .set({videoslist: {title: videotitle , url: downloadurl}}, { merge: true })
-          .then(() => {
+
+          if ( data.exercises != null &&   data.notes != null ) {
+
+            const dat = {class: data.class_no.toLowerCase(),
+               subject: svalues.toString().toLowerCase(),
+               topic: tvalues.toString().toLowerCase(),
+               lesson: lvalues.toString().toLowerCase(),
+               data: {videoslist: {title: videotitle , streamurl: downloadurl},
+               noteslist: data.notes ,
+                exerciselist: data.exercises  }  };
+
             this.afs
-            .collection('materialhist')
-            .add({type: 'Video', lesson : lvalues.toString(), time: formatDate(new Date(), 'yyyy/MM/dd', 'en')  } );
+            .collection('class')
+            .add(dat)
+            .then(() => {
+              this.afs
+              .collection('materialhist')
+              .add({type: 'Video', lesson : lvalues.toString(), time: formatDate(new Date(), 'yyyy/MM/dd', 'en')  } );
+
+              this.openSnackBar('Video Uploaded SuccessFully', 'Video Upload');
+            })
+            .catch((error) => {
+              this.openSnackBar('Failed to Upload, reason' + error.message, 'Error Upload');
+            });
 
 
-            this.openSnackBar('Video Uploaded SuccessFully', 'Video Upload');
-          })
-          .catch((error) => {
-            this.openSnackBar('Failed to Upload, reason' + error.message, 'Error Upload');
-          });
+
+          } else if ( data.exercises != null &&   data.notes == null ) {
+
+
+            const dat = {class: data.class_no.toLowerCase(),
+              subject: svalues.toString().toLowerCase(),
+              topic: tvalues.toString().toLowerCase(),
+              lesson: lvalues.toString().toLowerCase(),
+              data: {videoslist: {title: videotitle , streamurl: downloadurl},
+               exerciselist: data.exercises  }  };
+
+            this.afs
+            .collection('class')
+            .add(dat)
+            .then(() => {
+              this.afs
+              .collection('materialhist')
+              .add({type: 'Video', lesson : lvalues.toString(), time: formatDate(new Date(), 'yyyy/MM/dd', 'en')  } );
+
+
+              this.openSnackBar('Video Uploaded SuccessFully', 'Video Upload');
+            })
+            .catch((error) => {
+              this.openSnackBar('Failed to Upload, reason' + error.message, 'Error Upload');
+            });
+
+          } else if (data.exercises == null &&   data.notes != null ) {
+
+            const dat = {class: data.class_no.toLowerCase(),
+              subject: svalues.toString().toLowerCase(),
+              topic: tvalues.toString().toLowerCase(),
+              lesson: lvalues.toString().toLowerCase(),
+              data: {videoslist: {title: videotitle , streamurl: downloadurl},
+              noteslist: data.notes   }  };
+
+            this.afs
+            .collection('class')
+            .add(dat)
+            .then(() => {
+              this.afs
+              .collection('materialhist')
+              .add({type: 'Video', lesson : lvalues.toString(), time: formatDate(new Date(), 'yyyy/MM/dd', 'en')  } );
+
+
+              this.openSnackBar('Video Uploaded SuccessFully', 'Video Upload');
+            })
+            .catch((error) => {
+              this.openSnackBar('Failed to Upload, reason' + error.message, 'Error Upload');
+            });
+
+          } else if (data.exercises == null &&   data.notes == null && data.videos != null ) {
+
+            const dat = {class: data.class_no.toLowerCase(),
+              subject: svalues.toString().toLowerCase(),
+              topic: tvalues.toString().toLowerCase(),
+              lesson: lvalues.toString().toLowerCase(),
+              data: {videoslist: {title: videotitle , streamurl: downloadurl} }  };
+
+            this.afs
+            .collection('class')
+            .add(dat)
+            .then(() => {
+              this.afs
+              .collection('materialhist')
+              .add({type: 'Video', lesson : lvalues.toString(), time: formatDate(new Date(), 'yyyy/MM/dd', 'en')  } );
+
+
+              this.openSnackBar('Video Uploaded SuccessFully', 'Video Upload');
+            })
+            .catch((error) => {
+              this.openSnackBar('Failed to Upload, reason' + error.message, 'Error Upload');
+            });
+
+          }
+
+
+
+
         });
 
 
@@ -244,6 +334,15 @@ export class FirebaseserviceService {
     .snapshotChanges();
   }
 
+
+  getmaterialdata() {
+
+    return this.afs
+    .collection('class')
+    .snapshotChanges();
+
+  }
+
   snakeActivity(value) {
     this.afs
           .collection('activity').doc('games').set({snake: value}, { merge: true })
@@ -279,10 +378,16 @@ export class FirebaseserviceService {
   }
 
   getActivities() {
+
     return this.afs
     .collection('activity')
     .doc('games')
-    .snapshotChanges();
+    .snapshotChanges()
+       .subscribe( data => {
+         return data;
+
+    });
+
   }
 
 

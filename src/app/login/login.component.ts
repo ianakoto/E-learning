@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
-      pwd: ['', Validators.required],
+      password: ['', Validators.required],
     });
 
 
@@ -35,11 +35,13 @@ export class LoginComponent implements OnInit {
 
 
   signIn() {
+
     this.isSubmitted = true;
     if (this.loginForm.invalid) {
       return;
     }
-    this.authService.login(this.loginForm.value);
+
+    this.authService.login(this.loginForm.value, this.isSubmitted);
 
   }
 

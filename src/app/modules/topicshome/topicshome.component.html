@@ -1,1 +1,26 @@
-<p>topicshome works!</p>
+<mat-toolbar >
+  <mat-toolbar-row>
+      <span class="span" style="text-indent: 5px; font:status-bar; font-size:large">Select a Topic</span>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+<div style="margin: 20px;" *ngIf="topics?.length;" >
+
+
+
+
+  <mat-card *ngFor="let item of topics">
+    <ul style="list-style-type: none;margin: auto; padding-right:50px;">
+      <li style="font:lighter; font-size:large"> {{item}} </li>
+
+      <button mat-raised-button (click)="enterLesson(item)">View Topic</button>
+
+    </ul>
+
+  </mat-card>
+
+
+
+
+</div>

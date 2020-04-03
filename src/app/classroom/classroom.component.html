@@ -1,1 +1,46 @@
-<p>classroom works!</p>
+<div *ngIf="videourl && videotitle">
+
+
+<mat-video title= "{{videotitle}}" [autoplay]="true" [preload]="true"  [muted] ="false" [fullscreen]="true" [download]="true" color="accent" spinner="spin">
+  <source matVideoSource src="{{videourl}}" type="video/mp4">
+</mat-video>
+
+</div>
+
+
+
+<div *ngIf="putexe" style="margin: 50px;">
+  <div *ngFor="let item of putexe">
+    <ul style="list-style-type: none; padding:20px">
+      <li> <p style="margin: 30px; font:caption">Exercise </p> </li>
+      <li style="margin: auto;" style="margin:30px; font-size:larger"   [innerHtml]="item.test"></li>
+      <li><button mat-raised-button style="margin: 30px;" (click)="viewit()"> Check Answer </button> </li>
+
+      <li *ngIf="viewanser ">
+        <span style="margin-top:30px; font:bold">Answer:  {{item.options}} </span>
+      </li>
+
+    </ul>
+
+  </div>
+
+
+
+
+</div>
+
+
+<div *ngIf="putnote" style="margin: 50px;">
+  <div *ngFor="let item of putnote">
+    <ul style="list-style-type: none;  padding:20px">
+      <li style="margin:30px;"> <p style=" font:caption">Notes </p> </li>
+      <li style="margin:30px;" [innerHtml]="item.text"></li>
+
+
+    </ul>
+
+  </div>
+
+
+
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseserviceService } from 'src/app/firebaseservice.service';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-homeheader',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeheaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
+
+  goutout() {
+      this.authService.logout();
+  }
 }

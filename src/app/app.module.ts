@@ -53,6 +53,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAnalyticsModule} from '@angular/fire/analytics';
 import { environment } from 'src/environments/environment';
+import { DefaluthomeModule } from './home/defaluthome/defaluthome.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +68,7 @@ import { environment } from 'src/environments/environment';
     AngularFireStorageModule,
     AngularFireAnalyticsModule,
     DefaultModule,
+    DefaluthomeModule,
     RouterModule,
     MatSliderModule,
     BrowserModule,

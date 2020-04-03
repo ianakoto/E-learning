@@ -3,5 +3,7 @@ export interface Videomodule {
   subjects: Array<string>;
   topics: Array<string>;
   lessons: Array<string>;
-  videos: Array<Array<string>>;
+  videos: Array<string>;
+  notes: Array<string>;
+  exercises: Array<string>;
 }

@@ -1,1 +1,26 @@
-<p>lessonshome works!</p>
+<mat-toolbar >
+  <mat-toolbar-row>
+      <span class="span" style="text-indent: 5px; font:status-bar; font-size:large">Select a Lesson</span>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+<div style="margin: 20px;" *ngIf="lessons?.length;" >
+
+
+
+
+  <mat-card *ngFor="let item of lessons">
+    <ul style="list-style-type: none;margin: auto; padding-right:50px;">
+      <li style="font:lighter; font-size:large"> {{item}} </li>
+
+      <button mat-raised-button (click)="enterclass(item)">View Lesson</button>
+
+    </ul>
+
+  </mat-card>
+
+
+
+
+</div>

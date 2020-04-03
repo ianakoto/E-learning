@@ -1,1 +1,38 @@
-<p>homeheader works!</p>
+<div>
+  <mat-toolbar color="primary"  class="expanded-toolbar navbar-transparent">
+
+    <span>
+      HAPPY KIDS SCHOOL
+    </span>
+  <div fxLayoutAlign="center start" fxShow="true" fxShow.gt-sm >
+    <ul style="list-style: none; display:inline-flex;">
+
+   <!-- <li>
+      <button mat-button [matMenuTriggerFor]="notification"  >  <mat-icon>notifications</mat-icon>   </button>
+
+      <mat-menu #notification="matMenu">
+        <mat-card>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Item 1</mat-list-item>
+            <mat-list-item role="listitem">Item 2</mat-list-item>
+            <mat-list-item role="listitem">Item 3</mat-list-item>
+          </mat-list>
+        </mat-card>
+        </mat-menu>
+
+    </li> -->
+
+    <li>
+      <button mat-button [matMenuTriggerFor]="menu" > <mat-icon>exit_to_app</mat-icon> </button>
+        <mat-menu #menu="matMenu">
+          <button (click)="goutout()" mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+                  lOG  OUT
+                  </button>
+          </mat-menu>
+    </li>
+
+  </ul>
+  </div>
+  </mat-toolbar>
+  </div>

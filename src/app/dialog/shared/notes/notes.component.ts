@@ -35,6 +35,7 @@ export class NotesComponent implements OnInit {
       topics: new FormArray([]),
       lessons: new FormArray([]),
       notes: new FormArray([]),
+
       class_no: ['', Validators.required]
   });
 

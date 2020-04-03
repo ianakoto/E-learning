@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { FirebaseserviceService } from 'src/app/firebaseservice.service';
 import { Videomodule } from 'src/app/videomodule';
 import { Observable } from 'rxjs';
-
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
 @Component({
@@ -20,6 +20,8 @@ export class VideoComponent implements OnInit {
   topno = 0;
   vidno = 0;
   lessno = 0;
+  notno = 0;
+  exeno = 0;
 
   hides = true;
   hidet = true;
@@ -31,6 +33,8 @@ export class VideoComponent implements OnInit {
   submitted = false;
 
   module: Videomodule;
+  public Editor = ClassicEditor;
+
 
   selectedFiles: FileList;
 
@@ -42,6 +46,8 @@ export class VideoComponent implements OnInit {
       topics: new FormArray([]),
       lessons: new FormArray([]),
       videos: new FormArray([]),
+      notes: new FormArray([]),
+      exercises: new FormArray([]),
       class_no: ['', Validators.required]
   });
 
@@ -119,6 +125,38 @@ export class VideoComponent implements OnInit {
   }
 
 
+  addnote() {
+
+    return this.notno += 1;
+  }
+
+
+  removenote() {
+    if (this.notno <= 0) {
+      return this.notno = 0;
+    }
+
+    return this.notno -= 1;
+  }
+
+
+  addexer() {
+
+    return this.exeno += 1;
+  }
+
+
+  removeexer() {
+    if (this.exeno <= 0) {
+      return this.exeno = 0;
+    }
+
+    return this.exeno -= 1;
+  }
+
+
+
+
     // convenience getters for easy access to form fields
     get f() { return this.dynamicForm.controls; }
 
@@ -126,6 +164,8 @@ export class VideoComponent implements OnInit {
     get t() { return this.f.topics as FormArray; }
     get l() { return this.f.lessons as FormArray; }
     get v() { return this.f.videos as FormArray; }
+    get n() { return this.f.notes as FormArray; }
+    get e() { return this.f.exercises as FormArray; }
     get c() {return this.f; }
 
     onChangeSubjects() {
@@ -192,6 +232,41 @@ export class VideoComponent implements OnInit {
   }
 
 
+  onChangeNotes() {
+    const numberOfnotes = this.notno;
+    if (this.n.length < numberOfnotes) {
+        for (let i = this.n.length; i < numberOfnotes; i++) {
+            this.n.push(this.formBuilder.group({
+                text: ['', Validators.required],
+            }));
+        }
+    } else {
+        for (let i = this.n.length; i >= numberOfnotes; i--) {
+            this.n.removeAt(i);
+        }
+    }
+  }
+
+
+  onChangeExercises() {
+    const numberOfexercises = this.exeno;
+    if (this.e.length < numberOfexercises) {
+        for (let i = this.e.length; i < numberOfexercises; i++) {
+            this.e.push(this.formBuilder.group({
+                test: ['', Validators.required],
+                options: ['', Validators.required],
+            }));
+        }
+    } else {
+        for (let i = this.e.length; i >= numberOfexercises; i--) {
+            this.e.removeAt(i);
+        }
+    }
+  }
+
+
+
+
 onSubmit() {
   this.submitted = true;
 
@@ -199,6 +274,7 @@ onSubmit() {
   if (this.dynamicForm.invalid ) {
       return;
   }
+
 
   this.module = this.dynamicForm.value;
 
@@ -221,9 +297,13 @@ onReset() {
   this.l.clear();
   this.lessno = 0;
   this.v.clear();
+  this.n.clear();
+  this.e.clear();
+  this.notno = 0;
   this.subno = 0;
   this.topno = 0;
   this.vidno = 0;
+  this.exeno = 0;
 }
 
 onClear() {
@@ -237,10 +317,24 @@ onClear() {
   this.subno = 0;
   this.topno = 0;
   this.vidno = 0;
+  this.exeno = 0;
+  this.notno = 0;
+  this.n.clear();
+  this.e.clear();
+
+
+
 }
 
 
 
+
+public onReady( editor ) {
+  editor.ui.getEditableElement().parentElement.insertBefore(
+      editor.ui.view.toolbar.element,
+      editor.ui.getEditableElement()
+  );
+}
 
 
 

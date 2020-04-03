@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+heard-dec{
+  display: inline-block;
+  flex-direction: row;
+  width: 70%;
+}
+
+
+mat-drawer {
+  width: 20%;
+}
+
+mat-drawer-container {
+  height: 100%;
+}
+
+
+.vf {
+
+  background-image: url('/asset/bghome.jpg');
+}
+mat-drawer {
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px 2px rgba(65, 64, 64, 0.4);
+}

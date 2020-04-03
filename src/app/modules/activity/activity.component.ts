@@ -26,13 +26,6 @@ export class ActivityComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.items$ = this.fireservice.getActivities()
-    .pipe( map( changes => {
-      return {
-        id: changes.payload.id,
-        data: changes.payload.data()};
-
-    }));
 
     this.items$.subscribe( data => {
 

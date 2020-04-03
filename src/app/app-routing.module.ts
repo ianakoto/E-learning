@@ -17,6 +17,7 @@ import { ClasshomeComponent } from './modules/classhome/classhome.component';
 import { DefaluthomeComponent } from './home/defaluthome/defaluthome.component';
 import { TopicshomeComponent } from './modules/topicshome/topicshome.component';
 import { LessonshomeComponent } from './modules/lessonshome/lessonshome.component';
+import { SubjectComponent } from './modules/subject/subject.component';
 
 const routes: Routes = [
 
@@ -31,11 +32,13 @@ const routes: Routes = [
     {path: 'notificationandissues', component: DashboardnotificationandissueComponent }
 
   ]},
-  { path: 'adminlogin', component: AdminloginComponent, canActivate: [AuthGuard] },
+  // { path: 'adminlogin', component: AdminloginComponent, canActivate: [AuthGuard] },
+  { path: 'adminlogin', component: AdminloginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'classroom', component: DefaluthomeComponent, children: [
     {path: '', pathMatch: 'full', redirectTo: 'classdashboard' },
     {path: 'classdashboard', component: ClasshomeComponent },
+    {path: 'subjects', component: SubjectComponent },
     {path: 'topics', component: TopicshomeComponent },
     {path: 'lessons', component: LessonshomeComponent },
     {path: 'tutor', component: ClassroomComponent}

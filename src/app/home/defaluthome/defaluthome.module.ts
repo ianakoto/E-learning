@@ -45,7 +45,9 @@ import { LessonshomeComponent } from 'src/app/modules/lessonshome/lessonshome.co
 import { TopicshomeComponent } from 'src/app/modules/topicshome/topicshome.component';
 import { ClassroomComponent } from 'src/app/classroom/classroom.component';
 import { RouterModule } from '@angular/router';
+import { SubjectComponent } from 'src/app/modules/subject/subject.component';
 
+import { MatVideoModule } from 'mat-video';
 
 
 @NgModule({
@@ -54,9 +56,11 @@ import { RouterModule } from '@angular/router';
     ClasshomeComponent,
     LessonshomeComponent,
     TopicshomeComponent,
-    ClassroomComponent
+    ClassroomComponent,
+    SubjectComponent
   ],
   imports: [
+    MatVideoModule,
     RouterModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

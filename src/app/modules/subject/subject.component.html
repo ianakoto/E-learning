@@ -1,0 +1,26 @@
+<mat-toolbar >
+  <mat-toolbar-row>
+      <span class="span" style="text-indent: 5px; font:status-bar; font-size:large">Select a Subject</span>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+<div style="margin: 20px;" *ngIf="subjects?.length;" >
+
+
+
+
+  <mat-card *ngFor="let item of subjects">
+    <ul style="list-style-type: none;margin: auto; padding-right:50px;">
+      <li style="font:lighter; font-size:large"> {{item}} </li>
+
+      <button mat-raised-button (click)="enterTopic(item)">View Subject</button>
+
+    </ul>
+
+  </mat-card>
+
+
+
+
+</div>

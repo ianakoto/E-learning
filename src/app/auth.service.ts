@@ -29,25 +29,33 @@ export class AuthService {
     // we subscribe to the authentication state; if the user is logged in,
     // we add the user's data to the browser's local storage; otherwise we store a null user:
     this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.user = user;
-        localStorage.setItem('user', JSON.stringify(this.user));
-      } else {
-        this.openSnackBar('Login Failed', 'Login');
-        localStorage.setItem('user', null);
+      if ( user != null) {
+        if (user) {
+          this.user = user;
+          localStorage.setItem('user', JSON.stringify(this.user));
+        } else {
+          this.openSnackBar('Login Failed', 'Login');
+          localStorage.setItem('user', null);
+        }
       }
+
     });
   }
 
 
-  async login(usert: Usert) {
-    const result = await this.afAuth.auth.signInWithEmailAndPassword(usert.email, usert.password)
-    .then(() => {
-      this.router.navigate(['classroom']);
-    } )
-    .catch((error) => {
-      this.openSnackBar('Login Failed', 'Login');
-    } );
+  async login(usert: Usert, submitted) {
+
+    if (submitted) {
+      console.log(usert);
+      const result = await this.afAuth.auth.signInWithEmailAndPassword(usert.email, usert.password)
+      .then(() => {
+        this.router.navigate(['classroom']);
+      } )
+      .catch((error) => {
+        this.openSnackBar('Login Failed', 'Login');
+      } );
+    }
+
 }
 
 
@@ -76,9 +84,8 @@ async  loginWithGoogle() {
 }
 
 async signInAdmin(usert: Usert) {
-
   const result = await (await this.afAuth.auth.signInWithEmailAndPassword(usert.email, usert.password)).user.uid;
-  if (result === 'fy6ULNfku1cwX489lEW0YHyTmUm2') {
+  if (result === '3hGpuhH7KcdbkBqNLUJZ6WYPBX13') {
     this.router.navigateByUrl('/admindashboard');
   } else {
     // tslint:disable-next-line:max-line-length
