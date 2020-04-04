@@ -11,6 +11,7 @@ import { switchMap } from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 import { Router } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class AuthService {
   constructor(
     public afAuth: AngularFireAuth,
     public router: Router,
+    private afs: AngularFirestore,
     public snackBar: MatSnackBar
   ) {
 
@@ -46,13 +48,19 @@ export class AuthService {
   async login(usert: Usert, submitted) {
 
     if (submitted) {
-      console.log(usert);
       const result = await this.afAuth.auth.signInWithEmailAndPassword(usert.email, usert.password)
-      .then(() => {
-        this.router.navigate(['classroom']);
+      .then((resultd) => {
+        if (resultd.user.emailVerified !== true) {
+          this.openSnackBar('Please validate your email address. Kindly check your inbox.' , 'Email Verification');
+          this.sendEmailVerification();
+        } else {
+          console.log('gfgfgf');
+          this.router.navigate(['classroom']);
+        }
+
       } )
       .catch((error) => {
-        this.openSnackBar('Login Failed', 'Login');
+        this.openSnackBar('Login Failed reason:' + error.message, 'Login');
       } );
     }
 
@@ -73,19 +81,25 @@ export class AuthService {
 
 async  loginWithGoogle() {
   await  this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider() )
-  .then( () => {
-    this.router.navigate(['classroom']);
-  })
-  .catch( (error) => {
-    this.openSnackBar('Login Failed', 'Login');
-    this.router.navigate(['/']);
-  } );
+  .then( (result) => {
+    if (result.user.emailVerified !== true) {
+      this.openSnackBar('Please validate your email address. Kindly check your inbox.' , 'Email Verification');
+      this.sendEmailVerification();
+    } else {
+      this.router.navigate(['classroom']);
+    }
+  }).catch((er) => {
+    this.openSnackBar('Login Failed reason:' + er.message, 'Login');
+  });
+
 
 }
+
 
 async signInAdmin(usert: Usert) {
   const result = await (await this.afAuth.auth.signInWithEmailAndPassword(usert.email, usert.password)).user.uid;
   if (result === 'eFkMW5DD6CPG6KuVF0HmoKDt1us2') {
+
     this.router.navigateByUrl('/admindashboard');
   } else {
     // tslint:disable-next-line:max-line-length
@@ -93,6 +107,18 @@ async signInAdmin(usert: Usert) {
     this.router.navigateByUrl('/');
   }
 
+
+
+}
+
+
+
+
+async sendEmailVerification() {
+  await this.afAuth.auth.currentUser.sendEmailVerification();
+  this.router.navigate(['classroom']);
+
+  // this.router.navigate(['admin/verify-email']);
 }
 
 
