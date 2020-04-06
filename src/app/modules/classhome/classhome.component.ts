@@ -1,13 +1,16 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 
+declare var require: any;
 @Component({
   selector: 'app-classhome',
   templateUrl: './classhome.component.html',
   styleUrls: ['./classhome.component.css'],
 })
+
 export class ClasshomeComponent implements OnInit {
 
+  imgname = require('src/assets/kidd2.jpg');
   constructor( public router: Router) { }
 
   ngOnInit(): void {

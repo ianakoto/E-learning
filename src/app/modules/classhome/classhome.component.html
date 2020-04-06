@@ -1,19 +1,58 @@
-<div>
 
+<div  style=" width:100%; height:100%;
+background: url({{imgname}});
+background-size:cover;
+margin: 0;
+display: flex;
+flex-flow: column;
+position: relative;">
 
+<div style="width:100%; height:100%;
+ background-image: linear-gradient(90deg, rgba(2,0,36,0.9108018207282913) 10%, rgba(2,0,36,0.6026785714285714) 100%);">
 
-<div  fxLayout="row" fxFlex="80" style="margin: 30px; text-align:center; margin-top:1em;" fxLayoutAlign="start start">
-  <h3 style="display: flex;"> Select your Class </h3>
+ <h3 style="display: flex; color:white; margin: 10px; font:caption"> Select your Class </h3>
 
+<div style="margin: 20px;"  fxLayout="row" fxFlex="80" fxLayoutAlign="start start" >
 
-  <mat-card ><p style="font-size:1.3vw;" >Kindergarten 2 (KG 2)</p><button (click)="kg2()"  mat-raised-button > Enter ClassRoom <mat-icon>arrow_forward</mat-icon></button></mat-card>
+  <ul style="
+  list-style-type: none;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;" fxLayout="row">
+    <li>
+      <mat-card ><p style="font-size:large" >Kindergarten 2</p><button (click)="kg2()"  mat-raised-button > Enter ClassRoom <mat-icon>arrow_forward</mat-icon></button></mat-card>
 
-  <mat-card><p style="font-size:1.3vw;">Basic School 1 (BS 1)  </p><button (click)="bs1()" mat-raised-button >Enter ClassRoom <mat-icon>arrow_forward</mat-icon></button> </mat-card>
+    </li>
+    <li>
+      <mat-card><p style="font-size:large;">Basic School 1</p><button (click)="bs1()" mat-raised-button >Enter ClassRoom <mat-icon>arrow_forward</mat-icon></button> </mat-card>
 
-  <mat-card><p style="font-size:1.3vw;">Basic School 2 (BS 2) </p> <button (click)="bs2()" mat-raised-button >Enter ClassRoom <mat-icon>arrow_forward</mat-icon></button> </mat-card>
-  <mat-card><p style="font-size:1.3vw;">Basic School 3 (BS 3) </p> <button (click)="bs3()" mat-raised-button >Enter ClassRoom <mat-icon>arrow_forward</mat-icon></button>  </mat-card>
-  <mat-card><p style="font-size:1.3vw;"> Basic School 4 (BS 4) </p> <button (click)="bs4()" mat-raised-button >Enter ClassRoom<mat-icon>arrow_forward</mat-icon></button> </mat-card>
+    </li>
+    <li>
+      <mat-card><p style="font-size:large;">Basic School 2</p> <button (click)="bs2()" mat-raised-button >Enter ClassRoom <mat-icon>arrow_forward</mat-icon></button> </mat-card>
+
+    </li>
+    <li>
+      <mat-card><p style="font-size:large;">Basic School 3</p> <button (click)="bs3()" mat-raised-button >Enter ClassRoom <mat-icon>arrow_forward</mat-icon></button>  </mat-card>
+
+    </li>
+    <li>
+      <mat-card><p style="font-size:large;"> Basic School 4</p> <button (click)="bs4()" mat-raised-button >Enter ClassRoom<mat-icon>arrow_forward</mat-icon></button> </mat-card>
+
+    </li>
+
+    </ul>
+
 
 </div>
+
+
+</div>
+
+
+
+
+
+
 
 </div>

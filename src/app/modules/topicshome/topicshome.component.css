@@ -28,6 +28,9 @@ button:hover{
   box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -2px grey;
 }
 
+mat-progress-bar {
+  height: 10px;
+}
 
 button {
   align-items: flex-end;

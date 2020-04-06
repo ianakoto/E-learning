@@ -1,8 +1,31 @@
 <mat-nav-list>
+  <button mat-mini-fab (click)="isExpanded = !isExpanded" color="warn" style="margin: 10px;">
+    <mat-icon aria-label="Menu">menu</mat-icon>
+  </button>
 
-  <a mat-list-item  [routerLink]="['classdashboard']" routerLinkActive="router-link-active"  style="margin-top: 2em;"  > <mat-icon style="color: gray; margin:30px;">home</mat-icon> Class Room </a>
 
 
+  <mat-nav-list>
+    <mat-list-item [routerLink]="['classdashboard']" routerLinkActive="router-link-active">
+      <mat-icon>home</mat-icon>
+      <h4 *ngIf="isExpanded" >Class Homepage</h4>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>person</mat-icon>
+      <h4 mat-line *ngIf="isExpanded">User Profile</h4>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>assignment</mat-icon>
+      <h4 mat-line *ngIf="isExpanded">Class Accessment</h4>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>games</mat-icon>
+      <h4 mat-line *ngIf="isExpanded">Extra Activities</h4>
+    </mat-list-item>
+  </mat-nav-list>
 
 
 </mat-nav-list>

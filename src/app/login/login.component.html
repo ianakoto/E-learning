@@ -12,7 +12,9 @@
 </div>
 </mat-toolbar>
 
-
+<div *ngIf="isSubmitted" style="margin-top: 1px;">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
 
 <!-- Material form login -->
 <mat-card>
@@ -58,9 +60,9 @@
 
 
       <!-- Register -->
-      <p>Not a member?
-        <a href="" routerLink='/register' style="font-size: medium; padding: 1em;">Register</a>
-      </p>
+
+      <a href="" routerLink='/register' style="font-size: medium; padding: 1em;">Sign Up here </a>
+
 
 
 
@@ -69,7 +71,7 @@
 
 
   <!-- Sign in with Google -->
-  <button mat-raised-button color="primary" (click)="withGoogle()" style="flex:content; width: 60%; text-align:center; margin:30px; background-color:crimson; "    class="z-depth-0 my-4 waves-effect">Sign In with <mat-icon>alternate_email</mat-icon>Google</button>
+  <button mat-raised-button color="primary" (click)="withGoogle()" style="flex:content; width: 50%; text-align:center; margin:30px; "    class="z-depth-0 my-4 waves-effect">Sign In with <mat-icon>alternate_email</mat-icon>Google</button>
 
 
   </mat-card-content>

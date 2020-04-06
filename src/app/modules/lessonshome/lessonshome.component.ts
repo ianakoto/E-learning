@@ -12,7 +12,7 @@ import { DocumentChangeAction, QueryDocumentSnapshot } from '@angular/fire/fires
 export class LessonshomeComponent implements OnInit {
 
   public topicname;
-
+  isSubmitted = true;
   mitems = [];
   lessons = [];
   noSubject = 'No lessons to Display';
@@ -40,9 +40,12 @@ export class LessonshomeComponent implements OnInit {
             if ( !this.lessons.includes(this.matmodule.lesson.toUpperCase()) ) {
 
               this.lessons.push(this.matmodule.lesson.toUpperCase());
+              if (this.lessons.length > 0 ) {
+                this.isSubmitted = false;
+              }
             }
           }
-          console.log( this.lessons);
+
         }
 
       });

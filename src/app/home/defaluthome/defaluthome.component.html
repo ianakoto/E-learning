@@ -3,9 +3,9 @@
 
 
 
-<mat-drawer-container class="z-depth-4">
+<mat-drawer-container class="z-depth-4" autosize>
 
-  <mat-drawer class="vf" mode="side" opened>
+  <mat-drawer class="vf"  #drawer mode="side" disableClose="true" opened="true">
     <app-homesidebar></app-homesidebar>
   </mat-drawer>
 
@@ -16,5 +16,5 @@
 </mat-drawer-container>
 
 
-
-<app-homefooter></app-homefooter>
+<!--
+<app-homefooter></app-homefooter> -->

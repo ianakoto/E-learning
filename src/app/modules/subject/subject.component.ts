@@ -25,7 +25,7 @@ export interface Datm {
 export class SubjectComponent implements OnInit {
 
   public classname;
-
+  isSubmitted = true;
   mitems = [];
   subjects = [];
   noSubject = 'No Subjects to Display';
@@ -52,6 +52,10 @@ export class SubjectComponent implements OnInit {
         if ( this.matmodule.class != null && this.matmodule.class === String(this.classname).toLowerCase()) {
             if ( !this.subjects.includes(this.matmodule.subject.toUpperCase()) ) {
               this.subjects.push(this.matmodule.subject.toUpperCase());
+
+              if (this.subjects.length > 0 ) {
+                this.isSubmitted = false;
+              }
             }
 
         }

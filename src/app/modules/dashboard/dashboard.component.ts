@@ -37,6 +37,8 @@ export class DashboardComponent implements OnInit {
   ELEMENT_DATA  = [];
   MATERIAL_ELEMENT_DATA  = [];
   matmodule: Histupload;
+  subscriptCount;
+  activeCount;
 
   constructor(private fireservice: FirebaseserviceService) { }
 
@@ -46,6 +48,17 @@ export class DashboardComponent implements OnInit {
     this.getuserRecord();
 
     this.getuploadRecord();
+
+    this.fireservice.getSubscriptionCount();
+    this.fireservice.getActiveUsers();
+
+    if (this.fireservice.subscriptionCount != null) {
+      this.subscriptCount = this.fireservice.subscriptionCount;
+    }
+
+    if (this.fireservice.activeCount != null) {
+      this.activeCount = this.fireservice.activeCount;
+    }
 
   }
 

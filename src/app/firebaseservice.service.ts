@@ -16,8 +16,9 @@ import { finalize } from 'rxjs/operators';
 import * as Blob from 'blob';
 import { formatDate } from '@angular/common';
 import { PutDataStore } from './put-data-store';
+import * as JSZip from 'jszip';
 
-
+import {saveAs } from 'file-saver';
 
 
 @Injectable({
@@ -33,12 +34,18 @@ export class FirebaseserviceService {
   uploadPercent: Observable<number>;
   snapshot: Observable<any>;
   downloadURL;
+  subscriptionCount;
+  activeCount;
 
   constructor(
     private afs: AngularFirestore,
     public snackBar: MatSnackBar,
     private storage: AngularFireStorage
   ) {
+
+
+
+
   }
 
 
@@ -53,6 +60,25 @@ export class FirebaseserviceService {
       console.log( videourl );
 
 
+    //   const fileName = file.name;
+    //   const zip: JSZip = new JSZip();
+
+    //   zip.file(fileName, file);
+    //   zip.generateAsync({type: 'blob', compression: 'DEFLATE',
+    //   compressionOptions: {
+    //       level: 0
+    //   }},
+    //   (metadata) => {
+    //     console.log('progression: ' + metadata.percent.toFixed(2) + ' %');
+    //     if (metadata.currentFile) {
+    //         console.log('current file = ' + metadata.currentFile);
+    //     }
+    // })
+    //   .then((content) => {
+    //       // see FileSaver.js
+    //       console.log(content.size);
+    //       saveAs(content, `${fileName}.zip`);
+    //   });
 
 
 
@@ -387,6 +413,71 @@ export class FirebaseserviceService {
          return data;
 
     });
+
+  }
+
+
+
+  getSubscriptionCount() {
+    return this.afs
+    .collection('users')
+    .get()
+    .subscribe(
+      (snapshot) => this.subscriptionCount = snapshot.docs.length
+    );
+  }
+
+  getActiveUsers() {
+    return this.afs
+    .collection('activeusers')
+    .doc('users')
+    .get()
+    .subscribe(
+      (snapshot) => {
+
+         const nm = snapshot.data() as {count: number};
+         this.activeCount = nm.count;
+         }
+    );
+  }
+
+
+  setActiveUsers() {
+    return this.afs
+    .collection('activeusers')
+    .doc('users')
+    .get()
+    .subscribe(
+      (snapshot) => {
+        const activeCount = snapshot.data() as {count: number};
+        return this.afs
+        .collection('activeusers')
+        .doc('users')
+        .set({count: activeCount.count + 1});
+
+        }
+    );
+
+  }
+
+  updateActiveUsers() {
+    return this.afs
+    .collection('activeusers')
+    .doc('users')
+    .get()
+    .subscribe(
+      (snapshot) => {
+        const activeCount = snapshot.data() as {count: number};
+        if (activeCount.count < 0 ) {
+          return;
+        }
+        return this.afs
+        .collection('activeusers')
+        .doc('users')
+        .set({count: activeCount.count - 1});
+
+        }
+    );
 
   }
 

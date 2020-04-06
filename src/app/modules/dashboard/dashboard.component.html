@@ -8,8 +8,10 @@
       <mat-icon class="icon1">computer</mat-icon>
       <ul style="list-style-type: none;">
         <li>Active Users</li>
+        <div *ngIf="activeCount">
+          <li style="font:caption; font-size:x-large; margin:5px;">+{{activeCount}}</li>
+        </div>
 
-        <li style="font:caption; font-size:x-large; margin:5px;">30</li>
 
       </ul>
     </mat-card>
@@ -18,8 +20,10 @@
       <mat-icon class="icon2">how_to_reg</mat-icon>
       <ul style="list-style-type: none;">
         <li>Subscriptions</li>
+        <div *ngIf="subscriptCount">
+          <li style="font:caption; font-size:x-large; margin:5px;">+{{subscriptCount}}</li>
+        </div>
 
-        <li style="font:caption; font-size:x-large; margin:5px;">+50</li>
 
       </ul>
     </mat-card>

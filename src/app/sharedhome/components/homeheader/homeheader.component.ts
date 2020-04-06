@@ -9,13 +9,14 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class HomeheaderComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private fireService: FirebaseserviceService) { }
 
   ngOnInit(): void {
   }
 
 
   goutout() {
+      this.fireService.updateActiveUsers();
       this.authService.logout();
   }
 }

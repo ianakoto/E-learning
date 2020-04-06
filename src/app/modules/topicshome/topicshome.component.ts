@@ -11,7 +11,7 @@ import { Datm } from '../subject/subject.component';
 })
 export class TopicshomeComponent implements OnInit {
 
-
+  isSubmitted = true;
   public subjectname;
 
   mitems = [];
@@ -44,6 +44,10 @@ export class TopicshomeComponent implements OnInit {
             if ( !this.topics.includes(this.matmodule.topic.toUpperCase()) ) {
 
               this.topics.push(this.matmodule.topic.toUpperCase());
+
+              if (this.topics.length > 0 ) {
+                this.isSubmitted = false;
+              }
             }
           }
 

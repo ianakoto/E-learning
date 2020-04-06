@@ -5,6 +5,10 @@
 
 </mat-toolbar>
 
+<div *ngIf="isSubmitted" style="margin-top: 1px;">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
 <div style="margin: 20px;" *ngIf="lessons?.length;" >
 
 

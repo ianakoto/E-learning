@@ -109,7 +109,7 @@ import { DefaluthomeModule } from './home/defaluthome/defaluthome.module';
     MatPaginatorModule,
     BrowserAnimationsModule,
   ],
-  providers: [ {provide: FirestoreSettingsToken, useValue: {}}],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

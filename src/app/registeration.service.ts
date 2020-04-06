@@ -5,7 +5,6 @@ import { User } from 'firebase';
 import {Usert } from 'src/app/usert';
 
 import { auth } from 'firebase/app';
-import { firestore } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
@@ -14,6 +13,7 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { formatDate } from '@angular/common';
+import { UserDD } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -33,42 +33,58 @@ export class RegisterationService {
     doRegister(value: Register, popupstyle: string) {
       return this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.pwd)
       .then(res => {
-        const datenow = formatDate(new Date(), 'yyyy/MM/dd', 'en');
-        if ( res.user.email != null) {
-          this.afs.collection('users').add(
-            {
-              email: value.email,
-              studen_name: value.student,
-              parent_name: value.parent,
-              phone: value.phone,
-              datereg : datenow
-            }).then( () => {
-                // pop up show successfull and rout
-                this.openSnackBar('Registration Successfull', 'Registration', popupstyle);
-                this.router.navigate(['classroom']);
-            } )
-            .catch((error) => {
-              // registration failed
-              console.log(error);
-              this.openSnackBar('Registration Failed, reason: ' + error.message, 'Registration', popupstyle);
-              this.router.navigate(['register']);
-            } );
-        }
-
+        this.sendEmailVerification();
       })
       .catch( (error) => {
-      this.openSnackBar('Registration Failed, reason: ' + error.message, 'Registration', popupstyle);
+      this.openSnackBar('Sign Up Failed, reason: ' + error.message, 'Sign Up', popupstyle);
       });
     }
 
     openSnackBar(message: string, action: string, style: string) {
       this.snackBar.open(message, action, {
-        duration: 20000,
+        duration: 8000,
         verticalPosition: 'top',
         panelClass: [style],
       });
     }
 
+
+    SetUserData(user) {
+      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+      const datenow = formatDate(new Date(), 'yyyy/MM/dd', 'en');
+      const userData: UserDD = {
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        emailVerified: user.emailVerified,
+        rdate: datenow
+      };
+      return userRef.set(userData, {
+        merge: true
+      });
+    }
+
+
+    async sendEmailVerification() {
+      await this.afAuth.auth.currentUser.sendEmailVerification()
+      .then(() => {
+        const datenow = formatDate(new Date(), 'yyyy/MM/dd', 'en');
+        const user = this.afAuth.auth.currentUser;
+        const userData  = {
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+          emailVerified: user.emailVerified,
+          rdate: datenow
+        };
+        this.SetUserData(userData);
+        this.router.navigate(['classroom']);
+      });
+
+      // this.router.navigate(['admin/verify-email']);
+    }
 
 
 }

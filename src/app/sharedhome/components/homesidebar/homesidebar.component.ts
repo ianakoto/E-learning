@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomesidebarComponent implements OnInit {
 
+  isExpanded = false;
   constructor() { }
 
   ngOnInit(): void {

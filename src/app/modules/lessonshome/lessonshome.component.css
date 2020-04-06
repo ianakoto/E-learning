@@ -22,6 +22,9 @@ mat-card:hover {
   font-size: 150%;
 }
 
+mat-progress-bar {
+  height: 10px;
+}
 
 button:hover{
   background-color: white;

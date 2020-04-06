@@ -12,7 +12,7 @@ heard-dec{
 
 
 mat-drawer {
-  width: 20%;
+  width: fit-content;
 }
 
 mat-drawer-container {

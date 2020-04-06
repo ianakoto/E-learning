@@ -6,53 +6,47 @@ button:hover{
 
 button {
   align-items: flex-end;
-  width: 40%;
-  height: 40%;
   width: max-content;
   flex-direction: row;
   display: inline-flex;
   flex-direction: row;
-  margin-right: 10px;
-  right: 0;
+  bottom: 0;
+  margin: 10px;
   position: absolute;
 }
 
-mat-icon {
-  width: 70px;
-  flex-direction: row;
-}
 
 mat-card {
-  width: 60%;
-  height: 70%;
-
-  display: inline-flex;
+  width: 50%;
+  height: 40%;
+  display: flex;
   flex-direction: row;
-  margin-top: 20px;
   padding: 50px;
-  margin: 20px;
-
-
+  margin: 80px;
   background-color:white;
 
 
+
 }
 
 
-.mbody {
-  background-image:  url("src/bghome.jpg") no-repeat center, linear-gradient(red, yellow);
-  background-repeat: no-repeat;
-  }
+.img-gradient{
+  position:relative;
+  display:inline-block;
+}
+
 
 
   mat-card:active {
     background-color: #fffdff;
 
-    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -2px rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -2px rgba(255, 255, 255, 0.726);
   }
 
   mat-card:hover {
-    background-color: #9794962f;
-    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -2px rgba(255, 255, 255, 0.4);
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px 0 rgb(12, 116, 235), 0 7px 10px -2px rgba(255, 255, 255, 0.726);
     font-size: 150%;
   }
+
+

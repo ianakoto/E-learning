@@ -1,13 +1,33 @@
+
+
 <mat-nav-list>
-
-  <a mat-list-item  [routerLink]="['dashboard']" routerLinkActive="router-link-active"  style="margin-top: 2em;"  > <mat-icon style="color: gray; margin:30px;">dashboard</mat-icon> DashBoard </a>
-  <a mat-list-item  [routerLink]="['manageclass']" style="margin-top: 2em;" > <mat-icon style="color: gray; margin:30px;">class</mat-icon> Manage ClassRoom</a>
-  <a mat-list-item   [routerLink]="['manageusers']"  style="margin-top: 2em;" > <mat-icon style="color: gray; margin:30px;">people</mat-icon> Users </a>
-  <a mat-list-item   [routerLink]="['activity']"     style="margin-top: 2em;" ><mat-icon style="color: gray; margin:30px;"> local_activity</mat-icon> Activities </a>
-  <a mat-list-item   [routerLink]="['notificationandissues']"   style="margin-top: 2em;" ><mat-icon style="color: gray; margin:30px;"> <mat-icon>notifications</mat-icon></mat-icon> Notifications </a>
+  <button mat-mini-fab (click)="isExpanded = !isExpanded" color="warn" style="margin: 10px;">
+    <mat-icon aria-label="Menu">menu</mat-icon>
+  </button>
 
 
 
+  <mat-nav-list>
+    <mat-list-item [routerLink]="['dashboard']" routerLinkActive="router-link-active">
+      <mat-icon >dashboard</mat-icon>
+      <h4 *ngIf="isExpanded" >DashBoard</h4>
+    </mat-list-item>
+
+    <mat-list-item [routerLink]="['manageclass']">
+      <mat-icon mat-list-icon>class</mat-icon>
+      <h4 mat-line *ngIf="isExpanded">Users</h4>
+    </mat-list-item>
+
+    <mat-list-item [routerLink]="['activity']">
+      <mat-icon mat-list-icon>local_activity</mat-icon>
+      <h4 mat-line *ngIf="isExpanded">Activities</h4>
+    </mat-list-item>
+
+    <mat-list-item  [routerLink]="['notificationandissues']">
+      <mat-icon mat-list-icon>notifications</mat-icon>
+      <h4 mat-line *ngIf="isExpanded">Notifications</h4>
+    </mat-list-item>
+  </mat-nav-list>
 
 
 </mat-nav-list>

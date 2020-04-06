@@ -3,7 +3,9 @@
   align-items: center;
 }
 
-
+mat-progress-bar {
+  height: 10px;
+}
 
 .white-text{
   color: white !important;

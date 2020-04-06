@@ -5,14 +5,16 @@
 
 </mat-toolbar>
 
-
+<div *ngIf="isSubmitted" style="margin-top: 1px;">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
 
 <!-- Material form login -->
 <mat-card>
   <div class="card">
   <mat-card-header class="card-header info-color white-text text-center py-4" >
     <p >
-      REGISTER
+      Sign Up
     </p>
   </mat-card-header>
   </div>
@@ -43,62 +45,10 @@
         </div>
       </div>
 
-      <!-- Phone -->
-      <div class="md-form">
-        <p [ngClass]="{ 'has-error': isSubmitted && formControls.phone.errors }">
-        <input type="tel" id="phone" class="form-control" formControlName="phone" placeholder="Phone Number" matInput>
-      </p>
-
-        <div *ngIf="isSubmitted && formControls.phone.errors" class="help-block">
-          <div *ngIf="formControls.phone.errors.required">Phone Number is required</div>
-        </div>
-      </div>
-
-            <!-- Parent Name -->
-            <div class="md-form">
-              <p [ngClass]="{ 'has-error': isSubmitted && formControls.parent.errors }">
-              <input type="text" id="parent" class="form-control" formControlName="parent" placeholder="Parent Name" matInput>
-            </p>
-
-              <div *ngIf="isSubmitted && formControls.parent.errors" class="help-block">
-                <div *ngIf="formControls.parent.errors.required">Parent Name is required</div>
-              </div>
-            </div>
-
-                  <!-- Student Name -->
-      <div class="md-form">
-        <p [ngClass]="{ 'has-error': isSubmitted && formControls.student.errors }">
-        <input type="text" id="student" class="form-control" formControlName="student" placeholder="Student Name" matInput>
-      </p>
-
-        <div *ngIf="isSubmitted && formControls.student.errors" class="help-block">
-          <div *ngIf="formControls.student.errors.required">Student Name is required</div>
-        </div>
-      </div>
-
-      <!-- Class -->
-
-      <div class="md-form" >
-        <p [ngClass]="{ 'has-error': isSubmitted && formControls.class_no.errors }">
-          <mat-select  [multiple]="false" formControlName="class_no" placeholder="Choose your Class" label="class">
-            <mat-option value="KG2" >KG 2</mat-option>
-            <mat-option value="BS Class 1">BS Class 1</mat-option>
-            <mat-option value="BS Class 2">BS Class 2</mat-option>
-            <mat-option value="BS Class 3">BS Class 3</mat-option>
-            <mat-option value="BS Class 4">BS Class 4</mat-option>
-
-          </mat-select>
-        </p>
-          <div *ngIf="isSubmitted && formControls.class_no.errors" class="help-block">
-            <div *ngIf="formControls.class_no.errors.required">Class is required</div>
-          </div>
-      </div>
-
-
 
 
        <!-- Sign UP button -->
-       <button mat-raised-button color="primary"  style="flex:content; width: 100%; text-align:center; "  type="submit" class="z-depth-0 my-4 waves-effect">Register</button>
+       <button mat-raised-button color="primary"  style="flex:content; width: 100%; text-align:center; "  type="submit" class="z-depth-0 my-4 waves-effect">Sign Up</button>
 
     </form>
     <!-- Form -->
